@@ -1,0 +1,82 @@
+{
+  "common": {
+    "dashboard": "Dashboard",
+    "leads": "Leads",
+    "campaigns": "Campaigns",
+    "insights": "Insights",
+    "settings": "Settings",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "refresh": "Refresh",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "create": "Create",
+    "loading": "Loading",
+    "error": "Error",
+    "success": "Success"
+  },
+  "dashboard": {
+    "welcomeBack": "Welcome back!",
+    "salesPipeline": "Your sales pipeline at a glance",
+    "allSystemsOperational": "All systems operational",
+    "thisWeek": "this week",
+    "marvinAI": "Marvin AI",
+    "sdrAssistant": "SDR Assistant",
+    "active": "Active"
+  },
+  "leads": {
+    "title": "Leads",
+    "description": "Manage and segment your leads",
+    "total": "total",
+    "totalLeads": "Total Leads",
+    "highValueLeads": "High-Value Leads",
+    "avgLeadScore": "Avg. Lead Score",
+    "responseRate": "Response Rate",
+    "importCSV": "Import CSV",
+    "addLead": "Add Lead",
+    "searchPlaceholder": "Search leads by name, email, or company...",
+    "allSegments": "All Segments",
+    "bulkActions": "Bulk Actions",
+    "selected": "selected",
+    "apply": "Apply"
+  },
+  "campaigns": {
+    "title": "Campaigns",
+    "description": "Create and manage your email sequences",
+    "total": "total",
+    "totalCampaigns": "Total Campaigns",
+    "active": "Active",
+    "totalRecipients": "Total Recipients",
+    "avgOpenRate": "Avg. Open Rate",
+    "templates": "Templates",
+    "createCampaign": "Create Campaign",
+    "allCampaigns": "All Campaigns"
+  },
+  "insights": {
+    "title": "Insights",
+    "description": "Analytics and performance metrics",
+    "performanceOverTime": "Performance Over Time",
+    "bestTimeToSend": "Best Time to Send",
+    "channelPerformance": "Channel Performance",
+    "segmentAnalysis": "Segment Analysis",
+    "revenueForecast": "Revenue Forecast",
+    "next30Days": "Next 30 Days",
+    "next90Days": "Next 90 Days",
+    "nextYear": "Next Year"
+  },
+  "marvin": {
+    "chatTitle": "Marvin Chat",
+    "chatSubtitle": "Your AI Sales Assistant",
+    "typePlaceholder": "Type your message...",
+    "isTyping": "Marvin is typing...",
+    "askMarvin": "Ask Marvin",
+    "analyzing": "Analyzing",
+    "suggesting": "Suggesting"
+  }
+}
+

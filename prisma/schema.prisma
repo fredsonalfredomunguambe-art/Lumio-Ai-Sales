@@ -1,0 +1,865 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Modelo para usuários (sincronizado com Clerk)
+model User {
+  id        String   @id @default(cuid())
+  clerkId   String   @unique // ID do usuário no Clerk
+  email     String?  // Email opcional para casos onde o Clerk não fornece
+  firstName String?
+  lastName  String?
+  imageUrl  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relacionamentos existentes
+  calendarEvents CalendarEvent[]
+  
+  // Relacionamentos SDR Agent
+  leads Lead[]
+  leadInteractions LeadInteraction[]
+  meetings Meeting[]
+  outreachCampaigns OutreachCampaign[]
+  outreachSequences OutreachSequence[]
+  automations Automation[]
+  segments Segment[]
+  
+  // Relacionamentos Training
+  trainingModules TrainingModule[]
+  trainingSessions TrainingSession[]
+  trainingProgress TrainingProgress[]
+  conversations Conversation[]
+  trainingDocuments TrainingDocument[]
+  vectorEmbeddings VectorEmbedding[]
+  onboardingData OnboardingData?
+  
+  // Relacionamentos Dashboard
+  company Company?
+  campaigns Campaign[]
+  campaignSequences CampaignSequence[]
+  analytics Analytics[]
+  marvinSettings MarvinSettings?
+  leadScores LeadScore[]
+  behavioralData BehavioralData[]
+  
+  // Relacionamentos Enhanced Marvin Configuration
+  pricingPlans PricingPlan[]
+  faqItems FAQItem[]
+  targetAudience TargetAudience?
+  salesStrategy SalesStrategy?
+  
+  // Relacionamentos Integrations
+  integrationConnections IntegrationConnection[]
+  integrationSyncJobs IntegrationSyncJob[]
+  
+  // Calendar sync
+  calendarSyncs CalendarSync[]
+
+  @@map("users")
+}
+
+// Enums para prioridade (usado em leads e eventos)
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+// Modelo para eventos do calendário
+model CalendarEvent {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  startDate   DateTime
+  endDate     DateTime
+  allDay      Boolean  @default(false)
+  category    EventCategory @default(MARKETING)
+  priority    Priority @default(MEDIUM)
+  color       String?
+  userId      String
+  
+  // External calendar integration
+  externalId       String? // ID from Google/Outlook
+  externalProvider String? // google, outlook, null for internal
+  syncStatus       String? // synced, pending, failed, null
+  
+  // Meeting details
+  linkedLeadId     String? // Link to lead
+  linkedCampaignId String? // Link to campaign
+  attendees        String? // JSON array of attendees
+  reminderMinutes  Int?    // Reminder before event
+  meetingUrl       String? // Video call URL (Zoom, Meet, etc)
+  location         String? // Physical or virtual location
+  
+  // Advanced features
+  completedAt      DateTime? // When meeting was marked complete
+  meetingNotes     String?   // Notes during/after meeting
+  prepNotes        String?   // AI-generated prep notes
+  outcome          String?   // positive, neutral, negative
+  
+  // Recurrence
+  recurrenceRule     Json?     // Recurrence pattern (frequency, interval, end)
+  recurrenceMasterId String?   // Link to master event
+  isException        Boolean   @default(false) // Is this occurrence edited?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relationships
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lead Lead? @relation(fields: [linkedLeadId], references: [id], onDelete: SetNull)
+  campaign Campaign? @relation(fields: [linkedCampaignId], references: [id], onDelete: SetNull)
+  recurrenceMaster CalendarEvent? @relation("EventRecurrence", fields: [recurrenceMasterId], references: [id], onDelete: Cascade)
+  occurrences CalendarEvent[] @relation("EventRecurrence")
+
+  @@index([externalId])
+  @@index([linkedLeadId])
+  @@index([linkedCampaignId])
+  @@index([userId, startDate])
+  @@index([recurrenceMasterId])
+  @@map("calendar_events")
+}
+
+// Enum para categorias de eventos
+enum EventCategory {
+  MARKETING
+  MEETING
+  CAMPAIGN
+  CONTENT
+  SOCIAL
+  ANALYTICS
+  PLANNING
+  SALES_CALL
+  DEMO
+  FOLLOW_UP
+  PROSPECTING
+}
+
+// Modelo para leads/prospects
+model Lead {
+  id          String   @id @default(cuid())
+  firstName   String
+  lastName    String
+  email       String
+  company     String?
+  jobTitle    String?
+  phone       String?
+  linkedinUrl String?
+  website     String?
+  industry    String?
+  companySize String?
+  location    String?
+  status      LeadStatus @default(NEW)
+  source      String? // lumio, hubspot, salesforce, shopify, linkedin, etc.
+  externalId  String? // ID from external system
+  lastSyncedAt DateTime? // When last synced from external system
+  syncMetadata String? // JSON with additional sync metadata
+  score       Int? // Lead score (0-100)
+  notes       String?
+  tags        String? // Comma-separated tags
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  interactions LeadInteraction[]
+  meetings Meeting[]
+  conversations Conversation[]
+  segment Segment? @relation(fields: [segmentId], references: [id], onDelete: SetNull)
+  segmentId String?
+  leadScores LeadScore[]
+  behavioralData BehavioralData[]
+  calendarEvents CalendarEvent[]
+
+  @@unique([userId, email])
+  @@index([source])
+  @@index([externalId])
+  @@map("leads")
+}
+
+// Enum para status de leads
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  UNQUALIFIED
+  CONVERTED
+  LOST
+}
+
+// Modelo para interações com leads
+model LeadInteraction {
+  id          String   @id @default(cuid())
+  leadId      String
+  type        InteractionType
+  channel     String // email, linkedin, phone, etc.
+  subject     String?
+  content     String
+  direction   InteractionDirection // inbound, outbound
+  status      InteractionStatus @default(SENT)
+  scheduledAt DateTime?
+  completedAt DateTime?
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relacionamentos
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("lead_interactions")
+}
+
+// Enum para tipos de interação
+enum InteractionType {
+  EMAIL
+  LINKEDIN_MESSAGE
+  PHONE_CALL
+  MEETING
+  FOLLOW_UP
+  NURTURE
+}
+
+// Enum para direção da interação
+enum InteractionDirection {
+  INBOUND
+  OUTBOUND
+}
+
+// Enum para status da interação
+enum InteractionStatus {
+  DRAFT
+  SCHEDULED
+  SENT
+  DELIVERED
+  OPENED
+  CLICKED
+  REPLIED
+  BOUNCED
+  FAILED
+}
+
+// Modelo para reuniões/meetings
+model Meeting {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  leadId      String?
+  startDate   DateTime
+  endDate     DateTime
+  location    String?
+  meetingUrl  String?
+  status      MeetingStatus @default(SCHEDULED)
+  type        MeetingType @default(SALES_CALL)
+  outcome     String?
+  notes       String?
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relacionamentos
+  lead Lead? @relation(fields: [leadId], references: [id], onDelete: SetNull)
+  segment Segment? @relation(fields: [segmentId], references: [id], onDelete: SetNull)
+  segmentId String?
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("meetings")
+}
+
+// Enum para status de reuniões
+enum MeetingStatus {
+  SCHEDULED
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+// Enum para tipos de reunião
+enum MeetingType {
+  SALES_CALL
+  DEMO
+  DISCOVERY
+  FOLLOW_UP
+  NEGOTIATION
+  CLOSING
+}
+
+// Modelo para campanhas de outreach
+model OutreachCampaign {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  type        CampaignType
+  status      CampaignStatus @default(DRAFT)
+  template    String? // Email template
+  subject     String?
+  schedule    String? // Cron expression
+  targetCriteria String? // JSON with targeting criteria
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sequences OutreachSequence[]
+
+  @@map("outreach_campaigns")
+}
+
+// Enum para tipos de campanha
+enum CampaignType {
+  EMAIL_SEQUENCE
+  LINKEDIN_SEQUENCE
+  PHONE_SEQUENCE
+  MIXED_SEQUENCE
+  NURTURE
+  REACTIVATION
+  CART_RECOVERY
+  COLD_INTRO
+}
+
+// Enum para status de campanha
+enum CampaignStatus {
+  DRAFT
+  SCHEDULED
+  RUNNING
+  LEARNING
+  PAUSED
+  COMPLETED
+  ARCHIVED
+}
+
+// Modelo para sequências de outreach
+model OutreachSequence {
+  id          String   @id @default(cuid())
+  campaignId  String
+  step        Int
+  delay       Int // Delay in hours
+  type        InteractionType
+  subject     String?
+  content     String
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relacionamentos
+  campaign OutreachCampaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("outreach_sequences")
+}
+
+// Modelo para automações
+model Automation {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  trigger     String // JSON with trigger configuration
+  actions     String // JSON with actions configuration
+  conditions  String? // JSON with conditions
+  status      AutomationStatus @default(ACTIVE)
+  lastRun     DateTime?
+  nextRun     DateTime?
+  totalRuns   Int @default(0)
+  successRate Float @default(0)
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("automations")
+}
+
+// Enum para status de automação
+enum AutomationStatus {
+  ACTIVE
+  PAUSED
+  INACTIVE
+  ERROR
+}
+
+// Modelo para segmentação de clientes
+model Segment {
+  id              String   @id @default(cuid())
+  name            String
+  description     String
+  color           String   @default("#3B82F6") // Cor para identificação visual
+  criteria        Json     // Critérios de segmentação em JSON
+  averageDealSize Float    @default(0)
+  totalRevenue    Float    @default(0)
+  userId          String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  leads Lead[]
+  meetings Meeting[]
+
+  @@map("segments")
+}
+
+// Training System Models
+model TrainingModule {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  duration    String
+  skills      Json     // Array of skills stored as JSON
+  status      String   @default("locked") // locked, in_progress, completed
+  progress    Int      @default(0) // 0-100
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessions TrainingSession[]
+  progressRecords TrainingProgress[]
+
+  @@map("training_modules")
+}
+
+model TrainingSession {
+  id        String   @id @default(cuid())
+  userId    String
+  moduleId  String
+  status    String   @default("in_progress") // in_progress, completed, paused
+  startTime DateTime @default(now())
+  endTime   DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  module TrainingModule @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  @@map("training_sessions")
+}
+
+model TrainingProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  moduleId  String
+  progress  Int      @default(0) // 0-100
+  status    String   @default("in_progress") // in_progress, completed
+  accuracy  Float    @default(0) // 0-100
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  module TrainingModule @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  @@map("training_progress")
+}
+
+model Conversation {
+  id           String   @id @default(cuid())
+  userId       String
+  leadId       String?
+  message      String
+  response     String
+  confidence   Float    @default(0) // 0-100
+  emotions     Json     // Array of detected emotions stored as JSON
+  sentiment    String   @default("neutral") // positive, negative, neutral
+  outcome      String   @default("pending") // qualified, meeting, not_interested, pending
+  satisfaction Float?   // 1-5 rating
+  responseTime Float?   // Response time in seconds
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lead Lead? @relation(fields: [leadId], references: [id], onDelete: SetNull)
+
+  @@map("conversations")
+}
+
+model OnboardingData {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  industry    String?
+  companySize String?
+  teamSize    String?
+  goals       Json     // Array of goals stored as JSON
+  challenges  Json     // Array of challenges stored as JSON
+  budget      String?
+  timeline    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("onboarding_data")
+}
+
+model TrainingDocument {
+  id            String    @id @default(cuid())
+  userId        String
+  fileName      String
+  filePath      String
+  fileType      String
+  fileSize      Int
+  documentType  String    @default("training") // training, knowledge, process
+  extractedText String?   // Extracted text content
+  status        String    @default("uploaded") // uploaded, processing, processed, error
+  processedAt   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("training_documents")
+}
+
+model VectorEmbedding {
+  id         String @id @default(cuid())
+  userId     String
+  documentId String
+  content    String
+  embedding  String // JSON string of the embedding vector
+  metadata   String // JSON string of metadata
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("vector_embeddings")
+}
+
+// New Dashboard Models
+
+model Company {
+  id          String   @id @default(cuid())
+  name        String
+  website     String?
+  industry    String?
+  companySize String?
+  mission     String?
+  uniqueValueProp String? // Unique Value Proposition
+  keyProducts String? // JSON array - apenas produtos principais
+  logo        String?
+  brandVoice  String? // professional, casual, friendly, technical
+  conversionGoals String? // JSON array - goals for lead conversion
+  commonObjections String? // JSON array - common customer objections
+  settings    Json?    // Company-specific settings
+  userId      String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("companies")
+}
+
+model Campaign {
+  id          String   @id @default(cuid())
+  name        String
+  type        CampaignType
+  status      CampaignStatus
+  mode        CampaignMode // AUTOPILOT, COPILOT
+  template    String?
+  subject     String?
+  content     String?
+  targetSegment String?
+  schedule    Json?    // Scheduling configuration
+  metrics     Json?    // Performance data
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sequences CampaignSequence[]
+  calendarEvents CalendarEvent[]
+
+  @@map("campaigns")
+}
+
+model CampaignSequence {
+  id          String   @id @default(cuid())
+  campaignId  String
+  step        Int
+  delay       Int      // Hours
+  type        InteractionType
+  subject     String?
+  content     String
+  status      SequenceStatus
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("campaign_sequences")
+}
+
+model Analytics {
+  id          String   @id @default(cuid())
+  type        AnalyticsType
+  data        Json     // Flexible data structure
+  period      String   // daily, weekly, monthly
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("analytics")
+}
+
+model MarvinSettings {
+  id          String   @id @default(cuid())
+  voice       Json     // Voice configuration
+  guidelines  Json     // Brand guidelines
+  faqs        Json     // FAQ database
+  examples    Json     // Good/bad examples
+  policies    Json     // Response policies
+  userId      String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("marvin_settings")
+}
+
+model LeadScore {
+  id          String   @id @default(cuid())
+  leadId      String
+  score       Int      // 0-100
+  factors     Json     // Scoring factors
+  aiGenerated Boolean  @default(true)
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("lead_scores")
+}
+
+model BehavioralData {
+  id          String   @id @default(cuid())
+  leadId      String
+  behavior    String   // opened, clicked, replied, etc.
+  context     Json     // Additional context
+  timestamp   DateTime @default(now())
+  userId      String
+  
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("behavioral_data")
+}
+
+// New Enums for Dashboard
+
+enum CampaignMode {
+  AUTOPILOT
+  COPILOT
+}
+
+enum SequenceStatus {
+  DRAFT
+  SCHEDULED
+  SENT
+  DELIVERED
+  OPENED
+  CLICKED
+  REPLIED
+  BOUNCED
+  FAILED
+}
+
+enum AnalyticsType {
+  OVERVIEW
+  CHANNEL_PERFORMANCE
+  CAMPAIGN_PERFORMANCE
+  SEGMENT_ANALYSIS
+  TIME_ANALYSIS
+  REVENUE_FORECAST
+  BEHAVIORAL_PATTERNS
+  CONVERSION_OPTIMIZATION
+}
+
+enum LeadScoreFactor {
+  EMAIL_OPEN
+  EMAIL_CLICK
+  WEBSITE_VISIT
+  FORM_SUBMIT
+  DEMO_REQUEST
+  PRICING_VIEW
+  SOCIAL_ENGAGEMENT
+  RESPONSE_TIME
+  INTERACTION_FREQUENCY
+}
+
+// Enhanced Models for Marvin Configuration
+
+model PricingPlan {
+  id            String   @id @default(cuid())
+  name          String
+  description   String?
+  price         Float
+  currency      String   @default("USD")
+  billingPeriod String   @default("monthly") // monthly, yearly
+  features      String   // JSON array
+  isPopular     Boolean  @default(false)
+  isActive      Boolean  @default(true)
+  userId        String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("pricing_plans")
+}
+
+model FAQItem {
+  id        String   @id @default(cuid())
+  category  String
+  question  String
+  answer    String
+  tags      String?  // JSON array
+  priority  Int      @default(1)
+  isActive  Boolean  @default(true)
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("faq_items")
+}
+
+model TargetAudience {
+  id              String   @id @default(cuid())
+  industry        String   // JSON array
+  companySize     String   // JSON array
+  jobTitles       String   // JSON array
+  painPoints      String   // JSON array
+  goals           String   // JSON array
+  budgetRange     String?
+  decisionProcess String?
+  userId          String   @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("target_audiences")
+}
+
+model SalesStrategy {
+  id              String   @id @default(cuid())
+  keyMessages     String   // JSON array
+  commonObjections String  // JSON array
+  callToActions   String   // JSON array
+  followUpSteps   String   // JSON array
+  userId          String   @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sales_strategies")
+}
+
+// Integration Connections Model
+model IntegrationConnection {
+  id            String    @id @default(cuid())
+  userId        String
+  integrationId String
+  credentials   String    // JSON object with encrypted credentials
+  status        String    @default("disconnected") // connected, disconnected, error
+  connectedAt   DateTime?
+  lastSync      DateTime?
+  settings      String?   // JSON object with integration-specific settings
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, integrationId])
+  @@map("integration_connections")
+}
+
+// Integration Sync Jobs Model
+model IntegrationSyncJob {
+  id                String    @id @default(cuid())
+  userId            String
+  integrationId     String
+  syncType          String    // "contacts", "deals", "products", "orders", etc.
+  status            String    @default("queued") // queued, running, completed, failed, cancelled
+  mode              String    @default("incremental") // initial, incremental, manual
+  progress          Int       @default(0) // 0-100
+  totalRecords      Int?
+  processedRecords  Int       @default(0)
+  createdRecords    Int       @default(0)
+  updatedRecords    Int       @default(0)
+  failedRecords     Int       @default(0)
+  errors            String?   // JSON array of error messages
+  startedAt         DateTime?
+  completedAt       DateTime?
+  estimatedTimeLeft Int?      // seconds
+  metadata          String?   // JSON with additional metadata
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, integrationId])
+  @@index([status])
+  @@map("integration_sync_jobs")
+}
+
+// Calendar Sync Configuration
+model CalendarSync {
+  id             String    @id @default(cuid())
+  userId         String
+  provider       String    // google, outlook
+  accessToken    String    // Encrypted access token
+  refreshToken   String    // Encrypted refresh token
+  expiresAt      DateTime  // Token expiration
+  calendarId     String    // External calendar ID
+  calendarName   String?   // Display name of calendar
+  lastSyncedAt   DateTime?
+  syncEnabled    Boolean   @default(true)
+  syncDirection  String    @default("both") // both, to_external, from_external
+  settings       String?   // JSON with sync preferences
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  // Relationships
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, provider, calendarId])
+  @@index([userId])
+  @@map("calendar_syncs")
+}

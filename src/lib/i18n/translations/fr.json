@@ -1,0 +1,82 @@
+{
+  "common": {
+    "dashboard": "Tableau de Bord",
+    "leads": "Prospects",
+    "campaigns": "Campagnes",
+    "insights": "Analyses",
+    "settings": "Paramètres",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "export": "Exporter",
+    "import": "Importer",
+    "refresh": "Actualiser",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "view": "Voir",
+    "create": "Créer",
+    "loading": "Chargement",
+    "error": "Erreur",
+    "success": "Succès"
+  },
+  "dashboard": {
+    "welcomeBack": "Bon retour!",
+    "salesPipeline": "Votre pipeline de ventes en un coup d'œil",
+    "allSystemsOperational": "Tous les systèmes opérationnels",
+    "thisWeek": "cette semaine",
+    "marvinAI": "Marvin IA",
+    "sdrAssistant": "Assistant SDR",
+    "active": "Actif"
+  },
+  "leads": {
+    "title": "Prospects",
+    "description": "Gérez et segmentez vos prospects",
+    "total": "total",
+    "totalLeads": "Total de Prospects",
+    "highValueLeads": "Prospects de Haute Valeur",
+    "avgLeadScore": "Score Moyen",
+    "responseRate": "Taux de Réponse",
+    "importCSV": "Importer CSV",
+    "addLead": "Ajouter Prospect",
+    "searchPlaceholder": "Rechercher par nom, email ou entreprise...",
+    "allSegments": "Tous les Segments",
+    "bulkActions": "Actions Groupées",
+    "selected": "sélectionné",
+    "apply": "Appliquer"
+  },
+  "campaigns": {
+    "title": "Campagnes",
+    "description": "Créez et gérez vos séquences d'emails",
+    "total": "total",
+    "totalCampaigns": "Total de Campagnes",
+    "active": "Actives",
+    "totalRecipients": "Total de Destinataires",
+    "avgOpenRate": "Taux d'Ouverture Moyen",
+    "templates": "Modèles",
+    "createCampaign": "Créer Campagne",
+    "allCampaigns": "Toutes les Campagnes"
+  },
+  "insights": {
+    "title": "Analyses",
+    "description": "Métriques de performance et analyses",
+    "performanceOverTime": "Performance dans le Temps",
+    "bestTimeToSend": "Meilleur Moment pour Envoyer",
+    "channelPerformance": "Performance par Canal",
+    "segmentAnalysis": "Analyse de Segments",
+    "revenueForecast": "Prévision de Revenus",
+    "next30Days": "30 Prochains Jours",
+    "next90Days": "90 Prochains Jours",
+    "nextYear": "Année Prochaine"
+  },
+  "marvin": {
+    "chatTitle": "Chat avec Marvin",
+    "chatSubtitle": "Votre Assistant de Vente IA",
+    "typePlaceholder": "Tapez votre message...",
+    "isTyping": "Marvin est en train d'écrire...",
+    "askMarvin": "Demandez à Marvin",
+    "analyzing": "Analyse en cours",
+    "suggesting": "Suggestions"
+  }
+}
+

@@ -1,0 +1,82 @@
+{
+  "common": {
+    "dashboard": "Painel",
+    "leads": "Leads",
+    "campaigns": "Campanhas",
+    "insights": "Insights",
+    "settings": "Configurações",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "export": "Exportar",
+    "import": "Importar",
+    "refresh": "Atualizar",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "view": "Ver",
+    "create": "Criar",
+    "loading": "Carregando",
+    "error": "Erro",
+    "success": "Sucesso"
+  },
+  "dashboard": {
+    "welcomeBack": "Bem-vindo de volta!",
+    "salesPipeline": "Seu pipeline de vendas resumido",
+    "allSystemsOperational": "Todos os sistemas operacionais",
+    "thisWeek": "esta semana",
+    "marvinAI": "Marvin AI",
+    "sdrAssistant": "Assistente SDR",
+    "active": "Ativo"
+  },
+  "leads": {
+    "title": "Leads",
+    "description": "Gerencie e segmente seus leads",
+    "total": "total",
+    "totalLeads": "Total de Leads",
+    "highValueLeads": "Leads de Alto Valor",
+    "avgLeadScore": "Pontuação Média",
+    "responseRate": "Taxa de Resposta",
+    "importCSV": "Importar CSV",
+    "addLead": "Adicionar Lead",
+    "searchPlaceholder": "Buscar por nome, email ou empresa...",
+    "allSegments": "Todos os Segmentos",
+    "bulkActions": "Ações em Massa",
+    "selected": "selecionado",
+    "apply": "Aplicar"
+  },
+  "campaigns": {
+    "title": "Campanhas",
+    "description": "Crie e gerencie suas sequências de email",
+    "total": "total",
+    "totalCampaigns": "Total de Campanhas",
+    "active": "Ativas",
+    "totalRecipients": "Total de Destinatários",
+    "avgOpenRate": "Taxa de Abertura Média",
+    "templates": "Modelos",
+    "createCampaign": "Criar Campanha",
+    "allCampaigns": "Todas as Campanhas"
+  },
+  "insights": {
+    "title": "Insights",
+    "description": "Métricas de desempenho e análises",
+    "performanceOverTime": "Desempenho ao Longo do Tempo",
+    "bestTimeToSend": "Melhor Hora para Enviar",
+    "channelPerformance": "Desempenho por Canal",
+    "segmentAnalysis": "Análise de Segmentos",
+    "revenueForecast": "Previsão de Receita",
+    "next30Days": "Próximos 30 Dias",
+    "next90Days": "Próximos 90 Dias",
+    "nextYear": "Próximo Ano"
+  },
+  "marvin": {
+    "chatTitle": "Chat com Marvin",
+    "chatSubtitle": "Seu Assistente de Vendas IA",
+    "typePlaceholder": "Digite sua mensagem...",
+    "isTyping": "Marvin está digitando...",
+    "askMarvin": "Pergunte ao Marvin",
+    "analyzing": "Analisando",
+    "suggesting": "Sugerindo"
+  }
+}
+

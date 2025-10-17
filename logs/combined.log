@@ -1,0 +1,14 @@
+{
+  message: 'Application shutting down...',
+  level: 'info',
+  service: 'lumio-integrations',
+  version: '0.1.0',
+  timestamp: '2025-10-09 23:41:20:4120'
+}
+{
+  message: 'Application shutting down...',
+  level: 'info',
+  service: 'lumio-integrations',
+  version: '0.1.0',
+  timestamp: '2025-10-10 00:43:31:4331'
+}
