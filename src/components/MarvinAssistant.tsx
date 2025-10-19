@@ -258,7 +258,7 @@ export default function MarvinAssistant({
               <Bot className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 flex items-center space-x-2">
+              <h3 className="font-semibold text-gray-900 dark:text-white flex items-center space-x-2 font-outfit">
                 <span>Marvin AI Assistant</span>
                 {isThinking && (
                   <div className="flex space-x-1">
@@ -274,7 +274,7 @@ export default function MarvinAssistant({
                   </div>
                 )}
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400 font-outfit">
                 {isThinking
                   ? "Analyzing your data..."
                   : `${suggestions.length} intelligent suggestions`}

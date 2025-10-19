@@ -230,7 +230,7 @@ const NotificationItem: React.FC<NotificationItemProps> = ({
 
   return (
     <div
-      className={`relative bg-white rounded-xl border-l-4 shadow-lg hover:shadow-xl transition-all duration-200 ${getPriorityColor()} ${
+      className={`relative bg-white rounded-xl border-l-4 shadow-lg hover:shadow-xl transition-all ${getPriorityColor()} ${
         isRead ? "opacity-75" : ""
       }`}
     >
@@ -328,7 +328,7 @@ export const SmartNotificationContainer: React.FC = () => {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 mb-4"
+        className="relative p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all mb-4"
       >
         <Bell className="w-6 h-6 text-gray-600" />
         {unreadCount > 0 && (

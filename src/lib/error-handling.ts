@@ -478,28 +478,10 @@ export class ErrorHandler {
     const config = ERROR_CONFIGS[error.code as ErrorCode];
 
     if (config.showToast) {
-      toast.error(
-        (t) => (
-          <div className="flex items-center space-x-2">
-            <span>{error.message}</span>
-            {config.retryable && (
-              <button
-                onClick={() => {
-                  toast.dismiss(t.id);
-                  onRetry();
-                }}
-                className="text-blue-500 hover:text-blue-700 underline"
-              >
-                Tentar novamente
-              </button>
-            )}
-          </div>
-        ),
-        {
-          duration: config.toastDuration || 6000,
-          position: "top-right",
-        }
-      );
+      toast.error(error.message, {
+        duration: config.toastDuration || 6000,
+        position: "top-right",
+      });
     }
   }
 

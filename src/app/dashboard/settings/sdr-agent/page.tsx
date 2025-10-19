@@ -194,10 +194,10 @@ export default function SDRAgentPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-50">
             SDR Agent Settings
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200 mt-1">
+          <p className="text-gray-600 dark:text-zinc-400 mt-1">
             Configure Marvin's automated outreach rules and strategies
           </p>
         </div>
@@ -229,10 +229,10 @@ export default function SDRAgentPage() {
               <Bot className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-zinc-50">
                 SDR Agent Status
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+              <p className="text-sm text-gray-600 dark:text-zinc-400">
                 {config.active
                   ? `Active with ${enabledRulesCount} rules enabled`
                   : "Inactive - Toggle to activate automated outreach"}
@@ -306,10 +306,10 @@ export default function SDRAgentPage() {
                     )}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                    <h3 className="font-semibold text-gray-900 dark:text-zinc-50">
                       {rule.category}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                    <p className="text-sm text-gray-600 dark:text-zinc-400">
                       Strategy: {rule.strategy.replace(/_/g, " ")}
                     </p>
                   </div>
@@ -521,10 +521,10 @@ export default function SDRAgentPage() {
                       {integration === "mailchimp" && "🐵"}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200 capitalize">
+                      <h3 className="font-semibold text-gray-900 dark:text-zinc-50 capitalize">
                         {integration}
                       </h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                      <p className="text-sm text-gray-600 dark:text-zinc-400">
                         Configure SDR behavior for {integration} leads
                       </p>
                     </div>
@@ -635,7 +635,7 @@ export default function SDRAgentPage() {
 
         {/* Templates Tab */}
         <TabsContent value="templates" className="space-y-4">
-          <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+          <p className="text-sm text-gray-600 dark:text-zinc-400">
             Message templates that SDR Agent uses for outreach. Customize with
             your brand voice.
           </p>
@@ -660,7 +660,7 @@ export default function SDRAgentPage() {
           ].map((template) => (
             <Card key={template.name}>
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                <h4 className="font-semibold text-gray-900 dark:text-zinc-50">
                   {template.name}
                 </h4>
                 <Badge variant="ghost">
@@ -668,7 +668,7 @@ export default function SDRAgentPage() {
                 </Badge>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-3">
-                <div className="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-200 mb-2">
+                <div className="text-xs text-gray-600 dark:text-zinc-400 mb-2">
                   Available Variables:
                 </div>
                 <div className="flex flex-wrap gap-1">
@@ -711,23 +711,23 @@ export default function SDRAgentPage() {
         <TabsContent value="performance">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <Card>
-              <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200 mb-1">
+              <div className="text-sm text-gray-600 dark:text-zinc-400 mb-1">
                 Total Sequences
               </div>
-              <div className="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+              <div className="text-2xl font-bold text-gray-900 dark:text-zinc-50">
                 127
               </div>
               <div className="text-xs text-green-600 mt-1">+23 this week</div>
             </Card>
             <Card>
-              <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200 mb-1">
+              <div className="text-sm text-gray-600 dark:text-zinc-400 mb-1">
                 Response Rate
               </div>
               <div className="text-2xl font-bold text-green-600">34.2%</div>
               <div className="text-xs text-green-600 mt-1">+8.5% vs manual</div>
             </Card>
             <Card>
-              <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200 mb-1">
+              <div className="text-sm text-gray-600 dark:text-zinc-400 mb-1">
                 Conversion Rate
               </div>
               <div className="text-2xl font-bold text-blue-600">12.1%</div>
@@ -738,7 +738,7 @@ export default function SDRAgentPage() {
           </div>
 
           <Card>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200 mb-4">
+            <h3 className="font-semibold text-gray-900 dark:text-zinc-50 mb-4">
               Performance by Rule
             </h3>
             <div className="space-y-3">
@@ -750,10 +750,10 @@ export default function SDRAgentPage() {
                     className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
                   >
                     <div>
-                      <div className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                      <div className="font-medium text-gray-900 dark:text-zinc-50">
                         {rule.category}
                       </div>
-                      <div className="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                      <div className="text-xs text-gray-600 dark:text-zinc-400">
                         {Math.floor(Math.random() * 50 + 20)} sequences • ROI:{" "}
                         {Math.floor(Math.random() * 200 + 100)}%
                       </div>
@@ -762,7 +762,7 @@ export default function SDRAgentPage() {
                       <div className="text-sm font-bold text-green-600">
                         {Math.floor(Math.random() * 20 + 15)}% conversion
                       </div>
-                      <div className="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                      <div className="text-xs text-gray-600 dark:text-zinc-400">
                         {Math.floor(Math.random() * 30 + 20)}% response
                       </div>
                     </div>

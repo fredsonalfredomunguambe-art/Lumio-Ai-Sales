@@ -263,10 +263,10 @@ export default function CampaignsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 transition-colors duration-200">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-50 font-outfit">
             Campaigns
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 mt-1 transition-colors duration-200">
+          <p className="text-gray-600 dark:text-zinc-400 mt-1 font-outfit">
             Automate and optimize your outreach
           </p>
         </div>
@@ -329,7 +329,7 @@ export default function CampaignsPage() {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 transition-colors duration-200"
+            className="px-4 py-2 border border-gray-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-zinc-800 text-gray-900 dark:text-zinc-50 font-outfit"
           >
             <option value="all">All Status</option>
             <option value="DRAFT">Draft</option>
@@ -342,7 +342,7 @@ export default function CampaignsPage() {
           <select
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 transition-colors duration-200"
+            className="px-4 py-2 border border-gray-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-zinc-800 text-gray-900 dark:text-zinc-50 font-outfit"
           >
             <option value="all">All Types</option>
             <option value="EMAIL_SEQUENCE">Email Sequence</option>
@@ -375,14 +375,14 @@ export default function CampaignsPage() {
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 rounded-lg flex items-center justify-center transition-colors duration-200">
+                  <div className="w-10 h-10 bg-blue-50 dark:bg-blue-500/10 rounded-lg flex items-center justify-center">
                     {getTypeIcon(campaign.type)}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 truncate transition-colors duration-200">
+                    <h3 className="font-semibold text-gray-900 dark:text-zinc-50 dark:text-zinc-50 truncate">
                       {campaign.name}
                     </h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 transition-colors duration-200">
+                    <p className="text-sm text-gray-500 dark:text-zinc-400 dark:text-zinc-400">
                       {campaign.recipients} recipients
                     </p>
                   </div>
@@ -403,35 +403,35 @@ export default function CampaignsPage() {
 
               {/* Metrics */}
               <div className="grid grid-cols-2 gap-3 mb-4">
-                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 transition-colors duration-200">
-                  <div className="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 mb-1 transition-colors duration-200">
+                <div className="bg-gray-50 dark:bg-zinc-800 rounded-lg p-3">
+                  <div className="text-xs text-gray-600 dark:text-zinc-400 dark:text-zinc-400 mb-1">
                     Open Rate
                   </div>
-                  <div className="text-xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 transition-colors duration-200">
+                  <div className="text-xl font-bold text-gray-900 dark:text-zinc-50 dark:text-zinc-50">
                     {campaign.openRate}%
                   </div>
                 </div>
-                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 transition-colors duration-200">
-                  <div className="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 mb-1 transition-colors duration-200">
+                <div className="bg-gray-50 dark:bg-zinc-800 rounded-lg p-3">
+                  <div className="text-xs text-gray-600 dark:text-zinc-400 dark:text-zinc-400 mb-1">
                     Click Rate
                   </div>
-                  <div className="text-xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 transition-colors duration-200">
+                  <div className="text-xl font-bold text-gray-900 dark:text-zinc-50 dark:text-zinc-50">
                     {campaign.clickRate}%
                   </div>
                 </div>
-                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 transition-colors duration-200">
-                  <div className="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 mb-1 transition-colors duration-200">
+                <div className="bg-gray-50 dark:bg-zinc-800 rounded-lg p-3">
+                  <div className="text-xs text-gray-600 dark:text-zinc-400 dark:text-zinc-400 mb-1">
                     Reply Rate
                   </div>
-                  <div className="text-xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 transition-colors duration-200">
+                  <div className="text-xl font-bold text-gray-900 dark:text-zinc-50 dark:text-zinc-50">
                     {campaign.replyRate}%
                   </div>
                 </div>
-                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 transition-colors duration-200">
-                  <div className="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 mb-1 transition-colors duration-200">
+                <div className="bg-gray-50 dark:bg-zinc-800 rounded-lg p-3">
+                  <div className="text-xs text-gray-600 dark:text-zinc-400 dark:text-zinc-400 mb-1">
                     Conversion
                   </div>
-                  <div className="text-xl font-bold text-green-600 dark:text-green-400 transition-colors duration-200">
+                  <div className="text-xl font-bold text-green-600 dark:text-green-400">
                     {campaign.conversionRate}%
                   </div>
                 </div>
@@ -439,23 +439,23 @@ export default function CampaignsPage() {
 
               {/* Progress Bar */}
               <div className="mb-4">
-                <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400 transition-colors duration-200 mb-2">
+                <div className="flex items-center justify-between text-xs text-gray-600 dark:text-zinc-400 mb-2">
                   <span>
                     Sequence Progress ({campaign.sequences.length} steps)
                   </span>
                   <span>75%</span>
                 </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 transition-colors duration-200">
+                <div className="w-full bg-gray-200 dark:bg-zinc-800 rounded-full h-2">
                   <div
-                    className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full transition-all duration-200"
+                    className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full transition-all"
                     style={{ width: "75%" }}
                   />
                 </div>
               </div>
 
               {/* Footer Actions */}
-              <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700 transition-colors duration-200">
-                <div className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 transition-colors duration-200">
+              <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-zinc-800">
+                <div className="text-xs text-gray-500 dark:text-zinc-400 dark:text-zinc-400">
                   {campaign.status === "RUNNING" ? (
                     <div className="flex items-center gap-1">
                       <Clock className="w-3 h-3" />
@@ -484,7 +484,7 @@ export default function CampaignsPage() {
                       title="Pause"
                       disabled={actionLoading === campaign.id}
                     >
-                      <Pause className="w-4 h-4 text-gray-600 dark:text-gray-400 transition-colors duration-200" />
+                      <Pause className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
                     </button>
                   ) : (
                     <button
@@ -508,7 +508,7 @@ export default function CampaignsPage() {
                     title="Duplicate"
                     disabled={actionLoading === campaign.id}
                   >
-                    <Copy className="w-4 h-4 text-gray-600 dark:text-gray-400 transition-colors duration-200" />
+                    <Copy className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
                   </button>
                   <button
                     onClick={(e) => {
@@ -519,13 +519,13 @@ export default function CampaignsPage() {
                     className="p-1.5 hover:bg-gray-100 rounded transition-colors"
                     title="View Details"
                   >
-                    <Eye className="w-4 h-4 text-gray-600 dark:text-gray-400 transition-colors duration-200" />
+                    <Eye className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
                   </button>
                   <button
                     className="p-1.5 hover:bg-gray-100 rounded transition-colors"
                     title="More"
                   >
-                    <MoreVertical className="w-4 h-4 text-gray-600 dark:text-gray-400 transition-colors duration-200" />
+                    <MoreVertical className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
                   </button>
                 </div>
               </div>

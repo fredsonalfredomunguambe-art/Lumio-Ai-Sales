@@ -287,10 +287,10 @@ export default function MarvinTrainingPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-50">
             Marvin Training
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200 mt-1">
+          <p className="text-gray-600 dark:text-zinc-400 mt-1">
             Teach Marvin about your business with documents and knowledge
           </p>
         </div>
@@ -322,10 +322,10 @@ export default function MarvinTrainingPage() {
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                   <Upload className="w-8 h-8 text-blue-600" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200 mb-2">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-zinc-50 mb-2">
                   Upload Training Documents
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200 mb-4">
+                <p className="text-sm text-gray-600 dark:text-zinc-400 mb-4">
                   Drag and drop files here, or click to browse
                 </p>
                 <input
@@ -347,7 +347,7 @@ export default function MarvinTrainingPage() {
                     {uploading ? "Uploading..." : "Browse Files"}
                   </ActionButton>
                 </label>
-                <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-200 mt-3">
+                <p className="text-xs text-gray-500 dark:text-zinc-400 mt-3">
                   Supported formats: PDF, DOCX, TXT, MD • Max 10MB per file
                 </p>
               </div>
@@ -363,7 +363,7 @@ export default function MarvinTrainingPage() {
                 className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
                   selectedCategory === cat.id
                     ? "bg-blue-600 text-white"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors duration-200 hover:bg-gray-200"
+                    : "bg-gray-100 dark:bg-zinc-900 text-gray-700 dark:text-zinc-300 hover:bg-gray-200"
                 }`}
               >
                 {cat.label}
@@ -379,17 +379,17 @@ export default function MarvinTrainingPage() {
           {/* Documents List */}
           <Card>
             <div className="mb-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-zinc-50">
                 Training Documents
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+              <p className="text-sm text-gray-600 dark:text-zinc-400">
                 {filteredDocs.length} document
                 {filteredDocs.length !== 1 ? "s" : ""}
               </p>
             </div>
 
             {filteredDocs.length === 0 ? (
-              <div className="text-center py-12 text-gray-500 dark:text-gray-400 transition-colors duration-200">
+              <div className="text-center py-12 text-gray-500 dark:text-zinc-400">
                 <FileText className="w-12 h-12 mx-auto mb-3 text-gray-400" />
                 <p>No documents uploaded yet</p>
                 <p className="text-sm mt-1">
@@ -409,7 +409,7 @@ export default function MarvinTrainingPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 truncate">
+                          <h4 className="font-medium text-gray-900 dark:text-zinc-50 truncate">
                             {doc.name}
                           </h4>
                           {doc.status === "ready" && (
@@ -422,7 +422,7 @@ export default function MarvinTrainingPage() {
                             <XCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
                           )}
                         </div>
-                        <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 transition-colors duration-200">
+                        <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-zinc-400">
                           <span>{formatFileSize(doc.size)}</span>
                           <span>•</span>
                           <Badge variant="ghost" size="sm">
@@ -453,10 +453,10 @@ export default function MarvinTrainingPage() {
                     </div>
                     <div className="flex items-center gap-1 flex-shrink-0">
                       <button
-                        className="p-2 hover:bg-gray-100 dark:bg-gray-800 rounded transition-colors"
+                        className="p-2 hover:bg-gray-100 dark:bg-zinc-900 rounded transition-colors"
                         title="View"
                       >
-                        <Eye className="w-4 h-4 text-gray-600 dark:text-gray-400 transition-colors duration-200" />
+                        <Eye className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
                       </button>
                       <button
                         onClick={() => handleDeleteDocument(doc.id)}
@@ -482,25 +482,25 @@ export default function MarvinTrainingPage() {
                 <Bot className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                <h3 className="font-semibold text-gray-900 dark:text-zinc-50">
                   Marvin's Knowledge
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                <p className="text-sm text-gray-600 dark:text-zinc-400">
                   Current training status
                 </p>
               </div>
             </div>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                <span className="text-sm text-gray-600 dark:text-zinc-400">
                   Total Documents
                 </span>
-                <span className="text-lg font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                <span className="text-lg font-bold text-gray-900 dark:text-zinc-50">
                   {documents.length}
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                <span className="text-sm text-gray-600 dark:text-zinc-400">
                   Ready
                 </span>
                 <span className="text-lg font-bold text-green-600">
@@ -508,7 +508,7 @@ export default function MarvinTrainingPage() {
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                <span className="text-sm text-gray-600 dark:text-zinc-400">
                   Processing
                 </span>
                 <span className="text-lg font-bold text-blue-600">
@@ -516,7 +516,7 @@ export default function MarvinTrainingPage() {
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                <span className="text-sm text-gray-600 dark:text-zinc-400">
                   Total Chunks
                 </span>
                 <span className="text-lg font-bold text-purple-600">
@@ -530,11 +530,11 @@ export default function MarvinTrainingPage() {
           <Card>
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-5 h-5 text-yellow-600" />
-              <h3 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+              <h3 className="font-semibold text-gray-900 dark:text-zinc-50">
                 Test Marvin's Knowledge
               </h3>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200 mb-4">
+            <p className="text-sm text-gray-600 dark:text-zinc-400 mb-4">
               Ask Marvin questions to see how well he learned from your
               documents
             </p>
@@ -570,10 +570,10 @@ export default function MarvinTrainingPage() {
                       <Bot className="w-4 h-4 text-white" />
                     </div>
                     <div className="flex-1">
-                      <div className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 mb-1">
+                      <div className="font-medium text-gray-900 dark:text-zinc-50 mb-1">
                         Marvin's Response:
                       </div>
-                      <p className="text-sm text-gray-700 dark:text-gray-300 transition-colors duration-200 whitespace-pre-wrap">
+                      <p className="text-sm text-gray-700 dark:text-zinc-300 whitespace-pre-wrap">
                         {testResponse}
                       </p>
                     </div>
@@ -602,10 +602,10 @@ export default function MarvinTrainingPage() {
                 <Sparkles className="w-4 h-4 text-white" />
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200 mb-2">
+                <h4 className="font-semibold text-gray-900 dark:text-zinc-50 mb-2">
                   Training Tips
                 </h4>
-                <ul className="text-sm text-gray-700 dark:text-gray-300 transition-colors duration-200 space-y-1">
+                <ul className="text-sm text-gray-700 dark:text-zinc-300 space-y-1">
                   <li>
                     • Upload product documentation for better recommendations
                   </li>

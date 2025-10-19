@@ -80,23 +80,23 @@ export function WeekView({
   return (
     <div className="relative">
       {/* Header with day names */}
-      <div className="grid grid-cols-8 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 transition-colors duration-200">
-        <div className="p-2 border-r border-gray-200 dark:border-gray-700"></div>
+      <div className="grid grid-cols-8 border-b border-gray-200 dark:border-zinc-800 bg-gray-50 dark:bg-zinc-900">
+        <div className="p-2 border-r border-gray-200 dark:border-zinc-800"></div>
         {weekDays.map((day) => (
           <div
             key={day.toISOString()}
-            className={`p-3 border-r border-gray-200 dark:border-gray-700 text-center transition-colors duration-200 ${
+            className={`p-3 border-r border-gray-200 dark:border-zinc-800 text-center ${
               isToday(day) ? "bg-blue-50 dark:bg-blue-900/30" : ""
             }`}
           >
-            <div className="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-200">
+            <div className="text-xs text-gray-600 dark:text-zinc-400">
               {day.toLocaleDateString("en-US", { weekday: "short" })}
             </div>
             <div
-              className={`text-lg font-bold transition-colors duration-200 ${
+              className={`text-lg font-bold ${
                 isToday(day)
                   ? "text-blue-600 dark:text-blue-400"
-                  : "text-gray-900 dark:text-gray-100"
+                  : "text-gray-900 dark:text-zinc-50"
               }`}
             >
               {day.getDate()}
@@ -110,10 +110,10 @@ export function WeekView({
         {hours.map((hour) => (
           <div
             key={hour}
-            className="grid grid-cols-8 border-b border-gray-200 dark:border-gray-700"
+            className="grid grid-cols-8 border-b border-gray-200 dark:border-zinc-800"
           >
             {/* Time label */}
-            <div className="p-2 border-r border-gray-200 dark:border-gray-700 text-xs text-gray-600 dark:text-gray-400 text-right pr-2 transition-colors duration-200">
+            <div className="p-2 border-r border-gray-200 dark:border-zinc-800 text-xs text-gray-600 dark:text-zinc-400 text-right pr-2">
               {hour === 0
                 ? "12 AM"
                 : hour < 12
@@ -130,7 +130,7 @@ export function WeekView({
               return (
                 <div
                   key={`${day.toISOString()}-${hour}`}
-                  className={`relative min-h-[64px] border-r border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors duration-200 ${
+                  className={`relative min-h-[64px] border-r border-gray-200 dark:border-zinc-800 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer ${
                     isToday(day)
                       ? "bg-blue-50 dark:bg-blue-900/20 bg-opacity-30"
                       : ""

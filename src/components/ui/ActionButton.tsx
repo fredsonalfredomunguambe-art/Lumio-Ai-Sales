@@ -38,9 +38,9 @@ export function ActionButton({
     primary:
       "bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600 focus:ring-blue-500 dark:focus:ring-blue-400 shadow-sm hover:shadow",
     secondary:
-      "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400",
+      "bg-white dark:bg-zinc-800 text-gray-700 dark:text-zinc-200 border border-gray-300 dark:border-zinc-700 hover:bg-gray-50 dark:hover:bg-zinc-700 focus:ring-blue-500 dark:focus:ring-blue-400",
     ghost:
-      "bg-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:ring-gray-500 dark:focus:ring-gray-400",
+      "bg-transparent text-gray-700 dark:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800 focus:ring-gray-500 dark:focus:ring-zinc-400",
     danger:
       "bg-red-600 dark:bg-red-500 text-white hover:bg-red-700 dark:hover:bg-red-600 focus:ring-red-500 dark:focus:ring-red-400 shadow-sm hover:shadow",
     success:

@@ -146,7 +146,9 @@ export default function SmartMetricCard({
             <Icon className="w-4 h-4 text-blue-600" />
           </div>
           <div>
-            <p className="text-xs font-medium text-gray-500">{title}</p>
+            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 font-outfit">
+              {title}
+            </p>
           </div>
         </div>
         {change !== 0 && (
@@ -160,13 +162,15 @@ export default function SmartMetricCard({
             }`}
           >
             {getChangeIcon()}
-            <span className="ml-0.5">{Math.abs(change)}%</span>
+            <span className="ml-0.5 font-outfit">{Math.abs(change)}%</span>
           </div>
         )}
       </div>
 
       <div className="mb-2">
-        <p className="text-2xl font-bold text-gray-900">{formatValue(value)}</p>
+        <p className="text-2xl font-bold text-gray-900 dark:text-white font-outfit">
+          {formatValue(value)}
+        </p>
       </div>
 
       {/* Compact Trend Chart */}
@@ -177,7 +181,7 @@ export default function SmartMetricCard({
             return (
               <div
                 key={i}
-                className="bg-blue-200 rounded-sm flex-1 transition-all duration-200 hover:bg-blue-300"
+                className="bg-blue-200 rounded-sm flex-1 transition-all hover:bg-blue-300"
                 style={{ height: `${height}%` }}
               />
             );
@@ -189,11 +193,17 @@ export default function SmartMetricCard({
       {(explanation || marvinTip) && (
         <div className="absolute inset-0 bg-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none p-3 shadow-lg border border-gray-200 z-10">
           <div className="text-xs space-y-2">
-            {explanation && <p className="text-gray-700">{explanation}</p>}
+            {explanation && (
+              <p className="text-gray-700 dark:text-gray-300 font-outfit">
+                {explanation}
+              </p>
+            )}
             {marvinTip && (
               <div className="flex items-start space-x-1 text-blue-700 bg-blue-50 rounded p-2">
                 <Lightbulb className="w-3 h-3 mt-0.5 flex-shrink-0" />
-                <p className="text-xxs leading-tight">{marvinTip}</p>
+                <p className="text-xxs leading-tight font-outfit">
+                  {marvinTip}
+                </p>
               </div>
             )}
           </div>

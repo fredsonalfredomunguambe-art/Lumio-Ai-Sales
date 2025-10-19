@@ -186,10 +186,10 @@ export default function SettingsPage() {
   const renderCompanyTab = () => (
     <div className="space-y-8">
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-zinc-50">
           Company Information
         </h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200 mt-1">
+        <p className="text-sm text-gray-500 dark:text-zinc-400 mt-1">
           Update your company details and branding
         </p>
       </div>
@@ -205,7 +205,7 @@ export default function SettingsPage() {
             onChange={(e) =>
               setCompanyData((prev) => ({ ...prev, name: e.target.value }))
             }
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
           />
         </div>
 
@@ -219,7 +219,7 @@ export default function SettingsPage() {
             onChange={(e) =>
               setCompanyData((prev) => ({ ...prev, website: e.target.value }))
             }
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
           />
         </div>
 
@@ -292,10 +292,10 @@ export default function SettingsPage() {
       <div className="border-t border-gray-200 pt-6">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200">
+            <h3 className="text-lg font-medium text-gray-900 dark:text-zinc-50">
               Appearance
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">
+            <p className="text-sm text-gray-500 dark:text-zinc-400">
               Customize your dashboard appearance
             </p>
           </div>
@@ -339,11 +339,11 @@ export default function SettingsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200 flex items-center">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-zinc-50 flex items-center">
             Marvin SDR Agent
             <div className="w-2 h-2 bg-green-500 rounded-full ml-3 animate-pulse"></div>
           </h3>
-          <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200 mt-1">
+          <p className="text-gray-600 dark:text-zinc-400 mt-1">
             Configure your intelligent sales assistant
           </p>
         </div>
@@ -364,10 +364,10 @@ export default function SettingsPage() {
             <Settings className="w-8 h-8 text-white" />
           </div>
           <div className="relative text-left">
-            <div className="font-bold text-lg text-gray-900 dark:text-gray-100 transition-colors duration-200 mb-1">
+            <div className="font-bold text-lg text-gray-900 dark:text-zinc-50 mb-1">
               Configure Marvin
             </div>
-            <div className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200 mb-2">
+            <div className="text-sm text-gray-500 dark:text-zinc-400 mb-2">
               Complete setup with company profile, pricing, Q&A, and advanced
               settings
             </div>
@@ -380,16 +380,16 @@ export default function SettingsPage() {
 
         <button
           onClick={() => setIsMarvinChatOpen(true)}
-          className="group flex items-center justify-center p-6 border border-gray-200 rounded-2xl hover:bg-gradient-to-br hover:from-green-50 hover:to-emerald-50 transition-all duration-200 hover:shadow-lg"
+          className="group flex items-center justify-center p-6 border border-gray-200 rounded-2xl hover:bg-gradient-to-br hover:from-green-50 hover:to-emerald-50 transition-all hover:shadow-lg"
         >
           <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-200">
             <MessageSquare className="w-6 h-6 text-white" />
           </div>
           <div className="text-left">
-            <div className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+            <div className="font-semibold text-gray-900 dark:text-zinc-50">
               Test Chat
             </div>
-            <div className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">
+            <div className="text-sm text-gray-500 dark:text-zinc-400">
               Simulate conversations
             </div>
           </div>
@@ -399,40 +399,40 @@ export default function SettingsPage() {
       {/* Status */}
       {marvinConfig && (
         <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-6 border border-gray-200">
-          <h4 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200 mb-4 flex items-center">
+          <h4 className="font-semibold text-gray-900 dark:text-zinc-50 mb-4 flex items-center">
             <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
             Current Configuration
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div className="flex justify-between items-center p-3 bg-white rounded-xl">
-              <span className="text-gray-600 dark:text-gray-400 transition-colors duration-200 font-medium">
+              <span className="text-gray-600 dark:text-zinc-400 font-medium">
                 Company:
               </span>
-              <span className="text-gray-900 dark:text-gray-100 transition-colors duration-200 font-semibold">
+              <span className="text-gray-900 dark:text-zinc-50 font-semibold">
                 {marvinConfig.companyName || "Not configured"}
               </span>
             </div>
             <div className="flex justify-between items-center p-3 bg-white rounded-xl">
-              <span className="text-gray-600 dark:text-gray-400 transition-colors duration-200 font-medium">
+              <span className="text-gray-600 dark:text-zinc-400 font-medium">
                 Industry:
               </span>
-              <span className="text-gray-900 dark:text-gray-100 transition-colors duration-200 font-semibold">
+              <span className="text-gray-900 dark:text-zinc-50 font-semibold">
                 {marvinConfig.industry || "Not configured"}
               </span>
             </div>
             <div className="flex justify-between items-center p-3 bg-white rounded-xl">
-              <span className="text-gray-600 dark:text-gray-400 transition-colors duration-200 font-medium">
+              <span className="text-gray-600 dark:text-zinc-400 font-medium">
                 Tone:
               </span>
-              <span className="text-gray-900 dark:text-gray-100 transition-colors duration-200 font-semibold">
+              <span className="text-gray-900 dark:text-zinc-50 font-semibold">
                 {marvinConfig.tone || "Not configured"}
               </span>
             </div>
             <div className="flex justify-between items-center p-3 bg-white rounded-xl">
-              <span className="text-gray-600 dark:text-gray-400 transition-colors duration-200 font-medium">
+              <span className="text-gray-600 dark:text-zinc-400 font-medium">
                 Pricing Plans:
               </span>
-              <span className="text-gray-900 dark:text-gray-100 transition-colors duration-200 font-semibold">
+              <span className="text-gray-900 dark:text-zinc-50 font-semibold">
                 {marvinConfig.pricing?.length || 0} plans
               </span>
             </div>
@@ -445,10 +445,10 @@ export default function SettingsPage() {
         <div className="bg-white p-4 rounded-xl border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+              <p className="text-sm text-gray-600 dark:text-zinc-400">
                 Response Time
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+              <p className="text-2xl font-bold text-gray-900 dark:text-zinc-50">
                 1.2s
               </p>
             </div>
@@ -460,10 +460,10 @@ export default function SettingsPage() {
         <div className="bg-white p-4 rounded-xl border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+              <p className="text-sm text-gray-600 dark:text-zinc-400">
                 Satisfaction
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+              <p className="text-2xl font-bold text-gray-900 dark:text-zinc-50">
                 4.8/5
               </p>
             </div>
@@ -475,10 +475,10 @@ export default function SettingsPage() {
         <div className="bg-white p-4 rounded-xl border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+              <p className="text-sm text-gray-600 dark:text-zinc-400">
                 Conversations
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+              <p className="text-2xl font-bold text-gray-900 dark:text-zinc-50">
                 247
               </p>
             </div>
@@ -499,10 +499,10 @@ export default function SettingsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 dashboard-outline">
+          <h3 className="text-lg font-medium text-gray-900 dark:text-zinc-50 dashboard-outline">
             Team Members
           </h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">
+          <p className="text-sm text-gray-500 dark:text-zinc-400">
             Manage user access and permissions
           </p>
         </div>
@@ -516,16 +516,16 @@ export default function SettingsPage() {
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 transition-colors duration-200 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                 User
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 transition-colors duration-200 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                 Role
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 transition-colors duration-200 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 transition-colors duration-200 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -546,10 +546,10 @@ export default function SettingsPage() {
                       </div>
                     </div>
                     <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                      <div className="text-sm font-medium text-gray-900 dark:text-zinc-50">
                         {user.name}
                       </div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">
+                      <div className="text-sm text-gray-500 dark:text-zinc-400">
                         {user.email}
                       </div>
                     </div>
@@ -592,34 +592,30 @@ export default function SettingsPage() {
   const renderBillingTab = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 dashboard-outline">
+        <h3 className="text-lg font-medium text-gray-900 dark:text-zinc-50 dashboard-outline">
           Billing & Usage
         </h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">
+        <p className="text-sm text-gray-500 dark:text-zinc-400">
           Manage your subscription and view usage
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="p-6 border border-gray-200 rounded-lg">
-          <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 mb-4">
+          <h4 className="text-lg font-medium text-gray-900 dark:text-zinc-50 mb-4">
             Current Plan
           </h4>
           <div className="space-y-3">
             <div className="flex justify-between">
-              <span className="text-gray-500 dark:text-gray-400 transition-colors duration-200">
-                Plan
-              </span>
+              <span className="text-gray-500 dark:text-zinc-400">Plan</span>
               <span className="font-medium">{billingData.plan}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-500 dark:text-gray-400 transition-colors duration-200">
-                Price
-              </span>
+              <span className="text-gray-500 dark:text-zinc-400">Price</span>
               <span className="font-medium">{billingData.price}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-500 dark:text-gray-400 transition-colors duration-200">
+              <span className="text-gray-500 dark:text-zinc-400">
                 Next Billing
               </span>
               <span className="font-medium">{billingData.nextBilling}</span>
@@ -631,15 +627,13 @@ export default function SettingsPage() {
         </div>
 
         <div className="p-6 border border-gray-200 rounded-lg">
-          <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 mb-4">
+          <h4 className="text-lg font-medium text-gray-900 dark:text-zinc-50 mb-4">
             Usage This Month
           </h4>
           <div className="space-y-4">
             <div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500 dark:text-gray-400 transition-colors duration-200">
-                  Leads
-                </span>
+                <span className="text-gray-500 dark:text-zinc-400">Leads</span>
                 <span className="font-medium">
                   {billingData.usage.leads.toLocaleString()} /{" "}
                   {billingData.usage.limit.toLocaleString()}
@@ -659,7 +653,7 @@ export default function SettingsPage() {
 
             <div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500 dark:text-gray-400 transition-colors duration-200">
+                <span className="text-gray-500 dark:text-zinc-400">
                   Campaigns
                 </span>
                 <span className="font-medium">
@@ -689,10 +683,10 @@ export default function SettingsPage() {
   const renderSecurityTab = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 dashboard-outline">
+        <h3 className="text-lg font-medium text-gray-900 dark:text-zinc-50 dashboard-outline">
           Security Settings
         </h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">
+        <p className="text-sm text-gray-500 dark:text-zinc-400">
           Configure security and compliance settings
         </p>
       </div>
@@ -700,10 +694,10 @@ export default function SettingsPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
           <div>
-            <h4 className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200">
+            <h4 className="font-medium text-gray-900 dark:text-zinc-50">
               Two-Factor Authentication
             </h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">
+            <p className="text-sm text-gray-500 dark:text-zinc-400">
               Add an extra layer of security to your account
             </p>
           </div>
@@ -719,10 +713,10 @@ export default function SettingsPage() {
         </div>
 
         <div className="p-4 border border-gray-200 rounded-lg">
-          <h4 className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 mb-2">
+          <h4 className="font-medium text-gray-900 dark:text-zinc-50 mb-2">
             Session Timeout
           </h4>
-          <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200 mb-3">
+          <p className="text-sm text-gray-500 dark:text-zinc-400 mb-3">
             Automatically log out after inactivity
           </p>
           <select
@@ -744,10 +738,10 @@ export default function SettingsPage() {
         </div>
 
         <div className="p-4 border border-gray-200 rounded-lg">
-          <h4 className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 mb-2">
+          <h4 className="font-medium text-gray-900 dark:text-zinc-50 mb-2">
             Audit Log
           </h4>
-          <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200 mb-3">
+          <p className="text-sm text-gray-500 dark:text-zinc-400 mb-3">
             Track all user actions and changes
           </p>
           <div className="flex items-center">
@@ -794,10 +788,10 @@ export default function SettingsPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-50 font-outfit">
           Settings
         </h1>
-        <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200 mt-1">
+        <p className="text-gray-600 dark:text-zinc-400 mt-1 font-outfit">
           Manage your account and preferences
         </p>
       </div>
@@ -813,16 +807,16 @@ export default function SettingsPage() {
                   setActiveTab(tab.id);
                   toast.info("Tab Changed", `Switched to ${tab.name} settings`);
                 }}
-                className={`w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
+                className={`w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all font-outfit ${
                   activeTab === tab.id
                     ? "bg-gradient-to-r from-blue-50 to-white text-blue-700 border border-blue-200 shadow-sm"
-                    : "text-gray-600 dark:text-gray-400 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-100 transition-colors duration-200"
+                    : "text-gray-600 dark:text-zinc-400 hover:bg-gray-50 hover:text-gray-900 dark:text-zinc-50"
                 }`}
               >
                 <tab.icon className="w-5 h-5 mr-3" />
                 <div className="text-left">
-                  <div className="font-semibold">{tab.name}</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-200">
+                  <div className="font-semibold font-outfit">{tab.name}</div>
+                  <div className="text-xs text-gray-500 dark:text-zinc-400 font-outfit">
                     {tab.description}
                   </div>
                 </div>

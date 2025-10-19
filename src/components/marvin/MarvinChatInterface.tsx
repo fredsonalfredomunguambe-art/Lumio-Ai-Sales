@@ -266,7 +266,7 @@ export default function MarvinChatInterface({
                 </div>
                 <button
                   onClick={onClose}
-                  className="p-2 hover:bg-white/80 rounded-xl transition-all duration-200 group"
+                  className="p-2 hover:bg-white/80 rounded-xl transition-all group"
                 >
                   <X className="w-4 h-4 text-gray-500 group-hover:text-gray-700" />
                 </button>
@@ -402,7 +402,7 @@ export default function MarvinChatInterface({
                       value={currentMessage}
                       onChange={(e) => setCurrentMessage(e.target.value)}
                       placeholder="Type your message..."
-                      className="w-full px-4 py-3 pr-12 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-all duration-200"
+                      className="w-full px-4 py-3 pr-12 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-all"
                       rows={1}
                       disabled={isLoading}
                       onKeyPress={(e) => {
@@ -423,13 +423,13 @@ export default function MarvinChatInterface({
                   </div>
                 </div>
                 <div className="flex space-x-2">
-                  <button className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-all duration-200">
+                  <button className="p-3 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-all">
                     <Mic className="w-4 h-4" />
                   </button>
                   <button
                     onClick={sendMessage}
                     disabled={isLoading || !currentMessage.trim()}
-                    className="p-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg"
+                    className="p-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg"
                   >
                     {isLoading ? (
                       <Loader2 className="w-4 h-4 animate-spin" />

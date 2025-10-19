@@ -158,7 +158,7 @@ export default function LeadsPage() {
     if (!score) return "text-gray-400";
     if (score >= 80) return "text-green-600";
     if (score >= 60) return "text-yellow-600";
-    return "text-gray-600 dark:text-gray-400 transition-colors duration-200";
+    return "text-gray-600 dark:text-zinc-400";
   };
 
   const handleSort = (column: keyof Lead) => {
@@ -191,10 +191,10 @@ export default function LeadsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 transition-colors duration-200">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-50 font-outfit">
             Leads
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 mt-1 transition-colors duration-200">
+          <p className="text-gray-600 dark:text-zinc-400 mt-1 font-outfit">
             Manage and nurture your prospects
           </p>
         </div>
@@ -258,13 +258,13 @@ export default function LeadsPage() {
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Search */}
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500 dark:text-gray-400 transition-colors duration-200" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-zinc-500 dark:text-zinc-400" />
             <input
               type="text"
               placeholder="Search leads by name, email, or company..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-outfit placeholder:font-outfit"
             />
           </div>
 
@@ -272,7 +272,7 @@ export default function LeadsPage() {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white font-outfit"
           >
             <option value="all">All Status</option>
             <option value="NEW">New</option>
@@ -286,7 +286,7 @@ export default function LeadsPage() {
           <select
             value={selectedSource}
             onChange={(e) => setSelectedSource(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white font-outfit"
           >
             <option value="all">All Sources</option>
             <option value="shopify">Shopify</option>
@@ -300,20 +300,20 @@ export default function LeadsPage() {
           <div className="flex items-center gap-2 border border-gray-300 rounded-lg p-1">
             <button
               onClick={() => setView("table")}
-              className={`px-3 py-1 rounded transition-colors ${
+              className={`px-3 py-1 rounded transition-colors font-outfit ${
                 view === "table"
                   ? "bg-blue-600 text-white"
-                  : "text-gray-600 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                  : "text-gray-600 dark:text-zinc-400 hover:bg-gray-100 dark:hover:bg-zinc-800"
               }`}
             >
               Table
             </button>
             <button
               onClick={() => setView("cards")}
-              className={`px-3 py-1 rounded transition-colors ${
+              className={`px-3 py-1 rounded transition-colors font-outfit ${
                 view === "cards"
                   ? "bg-blue-600 text-white"
-                  : "text-gray-600 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                  : "text-gray-600 dark:text-zinc-400 hover:bg-gray-100 dark:hover:bg-zinc-800"
               }`}
             >
               Cards
@@ -431,20 +431,20 @@ export default function LeadsPage() {
                         {lead.lastName?.charAt(0)}
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 transition-colors duration-200">
+                        <div className="font-medium text-gray-900 dark:text-zinc-50 dark:text-zinc-50">
                           {lead.firstName} {lead.lastName}
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">
+                        <div className="text-sm text-gray-500 dark:text-zinc-400">
                           {lead.email}
                         </div>
                       </div>
                     </div>
                   </TableCell>
                   <TableCell>
-                    <div className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                    <div className="font-medium text-gray-900 dark:text-zinc-50">
                       {lead.company || "-"}
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">
+                    <div className="text-sm text-gray-500 dark:text-zinc-400">
                       {lead.jobTitle || "-"}
                     </div>
                   </TableCell>
@@ -499,7 +499,7 @@ export default function LeadsPage() {
                     )}
                   </TableCell>
                   <TableCell>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                    <div className="text-sm text-gray-600 dark:text-zinc-400">
                       {new Date(lead.updatedAt).toLocaleDateString()}
                     </div>
                   </TableCell>
@@ -513,10 +513,10 @@ export default function LeadsPage() {
                         onScheduled={() => console.log("Meeting scheduled")}
                       />
                       <button className="p-1 hover:bg-gray-100 rounded transition-colors">
-                        <Eye className="w-4 h-4 text-gray-600 dark:text-gray-400 transition-colors duration-200" />
+                        <Eye className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
                       </button>
                       <button className="p-1 hover:bg-gray-100 rounded transition-colors">
-                        <MoreVertical className="w-4 h-4 text-gray-600 dark:text-gray-400 transition-colors duration-200" />
+                        <MoreVertical className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
                       </button>
                     </div>
                   </TableCell>
@@ -535,10 +535,10 @@ export default function LeadsPage() {
                       {lead.lastName?.charAt(0)}
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 transition-colors duration-200">
+                      <div className="font-semibold text-gray-900 dark:text-zinc-50 dark:text-zinc-50">
                         {lead.firstName} {lead.lastName}
                       </div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">
+                      <div className="text-sm text-gray-500 dark:text-zinc-400">
                         {lead.company}
                       </div>
                     </div>
@@ -548,11 +548,11 @@ export default function LeadsPage() {
                   </Badge>
                 </div>
                 <div className="space-y-2 mb-4">
-                  <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                  <div className="text-sm text-gray-600 dark:text-zinc-400">
                     {lead.email}
                   </div>
                   {lead.phone && (
-                    <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                    <div className="text-sm text-gray-600 dark:text-zinc-400">
                       {lead.phone}
                     </div>
                   )}
@@ -566,7 +566,7 @@ export default function LeadsPage() {
                     >
                       {lead.score || "-"}
                     </div>
-                    <span className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-200">
+                    <span className="text-xs text-gray-500 dark:text-zinc-400">
                       Score
                     </span>
                   </div>
@@ -583,7 +583,7 @@ export default function LeadsPage() {
                       className="p-1.5 hover:bg-gray-100 rounded transition-colors inline-flex items-center justify-center"
                       title="Send Email"
                     >
-                      <Mail className="w-4 h-4 text-gray-600 dark:text-gray-400 transition-colors duration-200" />
+                      <Mail className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
                     </a>
                     {lead.phone && (
                       <a
@@ -591,7 +591,7 @@ export default function LeadsPage() {
                         className="p-1.5 hover:bg-gray-100 rounded transition-colors inline-flex items-center justify-center"
                         title="Call"
                       >
-                        <Phone className="w-4 h-4 text-gray-600 dark:text-gray-400 transition-colors duration-200" />
+                        <Phone className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
                       </a>
                     )}
                   </div>

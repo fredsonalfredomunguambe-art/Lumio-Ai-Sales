@@ -313,7 +313,7 @@ export default function CommandPalette({
               placeholder="Search commands, actions, or ask Marvin..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="flex-1 text-lg outline-none placeholder-gray-400"
+              className="flex-1 text-lg outline-none placeholder-gray-400 font-outfit"
             />
             <button
               onClick={onClose}
@@ -329,10 +329,10 @@ export default function CommandPalette({
           {Object.keys(groupedCommands).length === 0 ? (
             <div className="p-8 text-center">
               <Search className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2 font-outfit">
                 No commands found
               </h3>
-              <p className="text-gray-500">
+              <p className="text-gray-500 dark:text-gray-400 font-outfit">
                 Try a different search term or ask Marvin for help
               </p>
             </div>
@@ -375,7 +375,7 @@ export default function CommandPalette({
                             </div>
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center space-x-2">
-                                <h4 className="text-sm font-medium text-gray-900 truncate">
+                                <h4 className="text-sm font-medium text-gray-900 dark:text-white truncate font-outfit">
                                   {command.title}
                                 </h4>
                                 {command.badge && (
@@ -397,7 +397,7 @@ export default function CommandPalette({
                                   <Clock className="w-3 h-3 text-gray-400" />
                                 )}
                               </div>
-                              <p className="text-xs text-gray-500 truncate">
+                              <p className="text-xs text-gray-500 dark:text-gray-400 truncate font-outfit">
                                 {command.description}
                               </p>
                             </div>

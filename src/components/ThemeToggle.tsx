@@ -35,14 +35,14 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+      className="relative p-2 text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-zinc-100 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 hover:scale-105"
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
       title={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
       {isDark ? (
-        <Sun className="w-5 h-5 transition-transform duration-200 rotate-0 hover:rotate-90" />
+        <Sun className="w-5 h-5 transition-transform rotate-0 hover:rotate-90" />
       ) : (
-        <Moon className="w-5 h-5 transition-transform duration-200 rotate-0 hover:-rotate-12" />
+        <Moon className="w-5 h-5 transition-transform rotate-0 hover:-rotate-12" />
       )}
     </button>
   );

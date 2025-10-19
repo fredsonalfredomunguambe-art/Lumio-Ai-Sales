@@ -6,9 +6,7 @@ import dynamic from "next/dynamic";
 export const LazyChart = dynamic(
   () => import("recharts").then((mod) => mod.AreaChart),
   {
-    loading: () => (
-      <div className="h-64 bg-gray-100 animate-pulse rounded-lg" />
-    ),
+    loading: () => null,
     ssr: false,
   }
 );
@@ -64,4 +62,3 @@ export function throttle<T extends (...args: any[]) => any>(
     }
   };
 }
-

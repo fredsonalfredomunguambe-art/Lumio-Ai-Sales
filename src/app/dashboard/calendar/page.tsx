@@ -357,10 +357,10 @@ export default function CalendarPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 calendar-header">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-50 font-outfit">
             Calendar
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1 transition-colors duration-200">
+          <p className="text-gray-600 dark:text-zinc-400 mt-1 font-outfit">
             Schedule and manage your meetings
           </p>
         </div>
@@ -425,18 +425,18 @@ export default function CalendarPage() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => navigateMonth("prev")}
-                    className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
+                    className="p-2 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-lg"
                   >
-                    <ChevronLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                    <ChevronLeft className="w-5 h-5 text-gray-600 dark:text-zinc-400" />
                   </button>
                   <button
                     onClick={() => navigateMonth("next")}
-                    className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
+                    className="p-2 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-lg"
                   >
-                    <ChevronRight className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                    <ChevronRight className="w-5 h-5 text-gray-600 dark:text-zinc-400" />
                   </button>
                 </div>
-                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-zinc-50">
                   {currentDate.toLocaleDateString("en-US", {
                     month: "long",
                     year: "numeric",
@@ -470,7 +470,7 @@ export default function CalendarPage() {
                     (day) => (
                       <div
                         key={day}
-                        className="text-center text-xs font-semibold text-gray-600 dark:text-gray-400 py-2 transition-colors duration-200"
+                        className="text-center text-xs font-semibold text-gray-600 dark:text-zinc-400 py-2"
                       >
                         {day}
                       </div>
@@ -486,23 +486,23 @@ export default function CalendarPage() {
                       <div
                         key={index}
                         onClick={() => date && handleSlotClick(date)}
-                        className={`min-h-[100px] p-2 border rounded-lg transition-colors duration-200 ${
+                        className={`min-h-[100px] p-2 border rounded-lg ${
                           date
-                            ? "bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
-                            : "bg-gray-50 dark:bg-gray-900"
+                            ? "bg-white dark:bg-zinc-900 hover:bg-gray-50 dark:hover:bg-zinc-800 cursor-pointer"
+                            : "bg-gray-50 dark:bg-zinc-950"
                         } ${
                           isToday(date)
                             ? "border-blue-500 dark:border-blue-400 border-2"
-                            : "border-gray-200 dark:border-gray-700"
+                            : "border-gray-200 dark:border-zinc-800"
                         }`}
                       >
                         {date && (
                           <>
                             <div
-                              className={`text-sm font-medium mb-1 transition-colors duration-200 ${
+                              className={`text-sm font-medium mb-1 ${
                                 isToday(date)
                                   ? "text-blue-600 dark:text-blue-400 font-bold"
-                                  : "text-gray-700 dark:text-gray-300"
+                                  : "text-gray-700 dark:text-zinc-300"
                               }`}
                             >
                               {date.getDate()}
@@ -523,7 +523,7 @@ export default function CalendarPage() {
                                 </div>
                               ))}
                               {dayEvents.length > 2 && (
-                                <div className="text-xs text-gray-500 dark:text-gray-400 px-2 transition-colors duration-200">
+                                <div className="text-xs text-gray-500 dark:text-zinc-400 px-2">
                                   +{dayEvents.length - 2} more
                                 </div>
                               )}
@@ -561,7 +561,7 @@ export default function CalendarPage() {
             {view === "agenda" && (
               <div className="space-y-2">
                 {events.length === 0 ? (
-                  <div className="text-center py-12 text-gray-500 dark:text-gray-400 transition-colors duration-200">
+                  <div className="text-center py-12 text-gray-500 dark:text-zinc-400">
                     No events scheduled
                   </div>
                 ) : (
@@ -569,28 +569,28 @@ export default function CalendarPage() {
                     <div
                       key={event.id}
                       onClick={() => handleEventClick(event)}
-                      className="flex items-start gap-4 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors duration-200"
+                      className="flex items-start gap-4 p-4 border border-gray-200 dark:border-zinc-800 rounded-lg hover:bg-gray-50 dark:hover:bg-zinc-800/50 cursor-pointer"
                     >
                       <div className="flex-shrink-0 text-center w-16">
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                        <div className="text-sm font-semibold text-gray-900 dark:text-zinc-50">
                           {event.startDate.toLocaleDateString("en-US", {
                             month: "short",
                           })}
                         </div>
-                        <div className="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                        <div className="text-2xl font-bold text-gray-900 dark:text-zinc-50">
                           {event.startDate.getDate()}
                         </div>
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                          <h4 className="font-semibold text-gray-900 dark:text-zinc-50">
                             {event.title}
                           </h4>
                           <Badge variant="ghost" size="sm">
                             {event.category}
                           </Badge>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                        <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-zinc-400">
                           <div className="flex items-center gap-1">
                             <Clock className="w-4 h-4" />
                             {event.startDate.toLocaleTimeString("en-US", {
@@ -624,14 +624,14 @@ export default function CalendarPage() {
         <div className="space-y-6">
           {/* Upcoming Events */}
           <Card>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-200">
+            <h3 className="font-semibold text-gray-900 dark:text-zinc-50 mb-4">
               Upcoming Events
             </h3>
             <div className="space-y-2">
               {events.slice(0, 5).map((event) => (
                 <div
                   key={event.id}
-                  className="flex items-start gap-2 p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors duration-200"
+                  className="flex items-start gap-2 p-2 hover:bg-gray-50 dark:hover:bg-zinc-800 rounded-lg cursor-pointer"
                   onClick={() => handleEventClick(event)}
                 >
                   <div
@@ -640,10 +640,10 @@ export default function CalendarPage() {
                     )}`}
                   />
                   <div className="flex-1 min-w-0">
-                    <div className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate transition-colors duration-200">
+                    <div className="text-sm font-medium text-gray-900 dark:text-zinc-50 truncate">
                       {event.title}
                     </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-200">
+                    <div className="text-xs text-gray-500 dark:text-zinc-400">
                       {event.startDate.toLocaleDateString()} at{" "}
                       {event.startDate.toLocaleTimeString("en-US", {
                         hour: "numeric",
@@ -658,31 +658,31 @@ export default function CalendarPage() {
 
           {/* Stats */}
           <Card>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-200">
+            <h3 className="font-semibold text-gray-900 dark:text-zinc-50 mb-4">
               This Month
             </h3>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                <span className="text-sm text-gray-600 dark:text-zinc-400">
                   Total Events
                 </span>
-                <span className="text-lg font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                <span className="text-lg font-bold text-gray-900 dark:text-zinc-50">
                   {events.length}
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                <span className="text-sm text-gray-600 dark:text-zinc-400">
                   Meetings
                 </span>
-                <span className="text-lg font-bold text-blue-600 dark:text-blue-400 transition-colors duration-200">
+                <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
                   {events.filter((e) => e.category === "MEETING").length}
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+                <span className="text-sm text-gray-600 dark:text-zinc-400">
                   Sales Calls
                 </span>
-                <span className="text-lg font-bold text-green-600 dark:text-green-400 transition-colors duration-200">
+                <span className="text-lg font-bold text-green-600 dark:text-green-400">
                   {events.filter((e) => e.category === "SALES_CALL").length}
                 </span>
               </div>

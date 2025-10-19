@@ -249,21 +249,37 @@ export default function DashboardHome() {
 
   return (
     <div className="space-y-6">
-      {/* Compact Welcome Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 to-blue-900 dark:from-slate-800 dark:to-blue-800 rounded-lg p-5 text-white shadow-md transition-colors duration-200">
-        <div className="flex items-center justify-between">
+      {/* Welcome Section with Pipeline Background */}
+      <div className="relative overflow-hidden rounded-lg p-5 text-white shadow-md">
+        {/* Pipeline Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/fotos/pipeline.png"
+            alt="Pipeline Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div className="relative z-10 flex items-center justify-between">
           <div className="flex-1">
-            <h1 className="text-xl font-bold mb-1">Welcome back!</h1>
-            <p className="text-blue-200 text-sm">
+            <h1 className="text-xl font-bold mb-1 font-outfit text-white">
+              Welcome back!
+            </h1>
+            <p className="text-blue-200 text-sm font-outfit">
               Your sales pipeline at a glance
             </p>
           </div>
           <div className="flex items-center space-x-3">
             <div className="text-right mr-3">
-              <p className="text-sm font-semibold">Marvin AI</p>
+              <p className="text-sm font-semibold font-outfit text-white">
+                Marvin AI
+              </p>
               <div className="flex items-center space-x-1">
                 <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-xs text-green-300">Active</span>
+                <span className="text-xs text-green-300 font-outfit">
+                  Active
+                </span>
               </div>
             </div>
             <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
@@ -304,10 +320,10 @@ export default function DashboardHome() {
       {alerts.length > 0 && (
         <div className="card-compact">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+            <h2 className="text-sm font-semibold text-gray-900 dark:text-zinc-50 font-outfit">
               Marvin Alerts
             </h2>
-            <span className="px-2 py-0.5 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 text-xxs font-semibold rounded transition-colors duration-200">
+            <span className="px-2 py-0.5 bg-yellow-100 dark:bg-yellow-500/10 text-yellow-800 dark:text-yellow-400 text-xxs font-semibold rounded border border-yellow-200 dark:border-yellow-500/20 font-outfit">
               {alerts.length}
             </span>
           </div>
@@ -315,16 +331,16 @@ export default function DashboardHome() {
             {alerts.slice(0, 3).map((alert) => (
               <div
                 key={alert.id}
-                className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                className="flex items-center justify-between p-3 bg-gray-50 dark:bg-zinc-800 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700"
               >
                 <div className="flex items-center space-x-2 flex-1 min-w-0">
                   {getAlertIcon(alert.type)}
-                  <p className="text-xs font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 truncate transition-colors duration-200">
+                  <p className="text-xs font-medium text-gray-900 dark:text-zinc-100 truncate font-outfit">
                     {alert.message}
                   </p>
                 </div>
                 <button
-                  className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium ml-2 flex-shrink-0 transition-colors duration-200"
+                  className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium ml-2 flex-shrink-0 font-outfit"
                   onClick={() =>
                     toast.info("Action", `Executed: ${alert.action}`)
                   }
@@ -343,7 +359,7 @@ export default function DashboardHome() {
           <Link
             key={action.title}
             href={action.href}
-            className="group p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-md transition-all duration-200 bg-white dark:bg-gray-800"
+            className="group p-4 border border-gray-200 dark:border-zinc-800 rounded-lg hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-md transition-all bg-white dark:bg-zinc-900"
           >
             <div className="flex items-center space-x-3">
               <div
@@ -352,10 +368,10 @@ export default function DashboardHome() {
                 <action.icon className="w-4 h-4 text-white" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 text-sm truncate transition-colors duration-200">
+                <h3 className="font-semibold text-gray-900 dark:text-zinc-100 text-sm truncate font-outfit">
                   {action.title}
                 </h3>
-                <p className="text-xs text-gray-500 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 truncate transition-colors duration-200">
+                <p className="text-xs text-gray-500 dark:text-zinc-400 truncate font-outfit">
                   {action.description}
                 </p>
               </div>
@@ -367,12 +383,12 @@ export default function DashboardHome() {
       {/* Compact Pipeline */}
       <div className="card-compact">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-zinc-50 font-outfit">
             Sales Pipeline
           </h2>
           <Link
             href="/dashboard/leads"
-            className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200"
+            className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium font-outfit"
           >
             View All →
           </Link>
@@ -384,29 +400,29 @@ export default function DashboardHome() {
               className="flex items-center justify-between"
             >
               <div className="flex items-center space-x-2 flex-1 min-w-0">
-                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-200">
-                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400 transition-colors duration-200">
+                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400 font-outfit">
                     {index + 1}
                   </span>
                 </div>
                 <div className="min-w-0 flex-1">
-                  <span className="font-semibold text-xs text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 block truncate transition-colors duration-200">
+                  <span className="font-semibold text-xs text-gray-900 dark:text-zinc-100 block truncate font-outfit">
                     {stage.stage}
                   </span>
-                  <p className="text-xxs text-gray-500 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 transition-colors duration-200">
+                  <p className="text-xxs text-gray-500 dark:text-zinc-400 font-outfit">
                     {stage.count} leads
                   </p>
                 </div>
               </div>
               <div className="flex items-center space-x-2 flex-shrink-0">
                 <div className="text-right">
-                  <div className="text-sm font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+                  <div className="text-sm font-bold text-gray-900 dark:text-zinc-100 font-outfit">
                     {stage.percentage}%
                   </div>
                 </div>
-                <div className="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 transition-colors duration-200">
+                <div className="w-20 bg-gray-200 dark:bg-zinc-800 rounded-full h-1.5">
                   <div
-                    className="bg-blue-600 dark:bg-blue-500 h-1.5 rounded-full transition-colors duration-200"
+                    className="bg-blue-600 dark:bg-blue-500 h-1.5 rounded-full"
                     style={{ width: `${stage.percentage}%` }}
                   />
                 </div>
@@ -419,12 +435,12 @@ export default function DashboardHome() {
       {/* Compact Recent Activity */}
       <div className="card-compact">
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-zinc-50 font-outfit">
             Recent Activity
           </h2>
           <Link
             href="/dashboard/insights"
-            className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200"
+            className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium font-outfit"
           >
             View All →
           </Link>
@@ -433,24 +449,24 @@ export default function DashboardHome() {
           {recentActivity.slice(0, 5).map((activity) => (
             <div
               key={activity.id}
-              className="flex items-center space-x-2 p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200"
+              className="flex items-center space-x-2 p-2 hover:bg-gray-50 dark:hover:bg-zinc-800 rounded-lg"
             >
               <div
                 className={`w-7 h-7 rounded-lg flex items-center justify-center ${getActivityColor(
                   activity.status
-                )} dark:opacity-90 flex-shrink-0 transition-opacity duration-200`}
+                )} dark:opacity-90 flex-shrink-0`}
               >
                 {getActivityIcon(activity.type)}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-xs font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200 dark:text-gray-100 truncate transition-colors duration-200">
+                <p className="text-xs font-semibold text-gray-900 dark:text-zinc-100 truncate font-outfit">
                   {activity.title}
                 </p>
-                <p className="text-xxs text-gray-500 dark:text-gray-400 transition-colors duration-200 dark:text-gray-400 truncate transition-colors duration-200">
+                <p className="text-xxs text-gray-500 dark:text-zinc-400 truncate font-outfit">
                   {activity.description}
                 </p>
               </div>
-              <div className="text-xxs text-gray-400 dark:text-gray-500 dark:text-gray-400 transition-colors duration-200 flex-shrink-0 transition-colors duration-200">
+              <div className="text-xxs text-gray-400 dark:text-zinc-500 flex-shrink-0 font-outfit">
                 {activity.timestamp.toLocaleTimeString([], {
                   hour: "2-digit",
                   minute: "2-digit",
@@ -467,17 +483,17 @@ export default function DashboardHome() {
           <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Zap className="w-8 h-8 text-blue-600" />
           </div>
-          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 transition-colors duration-200 mb-2">
+          <h3 className="text-lg font-medium text-gray-900 dark:text-zinc-50 mb-2">
             Get Started with Lumio
           </h3>
-          <p className="text-gray-500 dark:text-gray-400 transition-colors duration-200 mb-6">
+          <p className="text-gray-500 dark:text-zinc-400 mb-6">
             Import your first leads or connect a data source to begin.
           </p>
           <div className="flex justify-center space-x-4">
             <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
               Import CSV
             </button>
-            <button className="border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-gray-50">
+            <button className="border border-gray-300 dark:border-zinc-700 text-gray-700 dark:text-zinc-300 px-4 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-zinc-800">
               Connect Source
             </button>
           </div>

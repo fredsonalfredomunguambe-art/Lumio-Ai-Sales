@@ -137,10 +137,10 @@ export default function InsightsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-200">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-50 font-outfit">
             Insights
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1 transition-colors duration-200">
+          <p className="text-gray-600 dark:text-zinc-400 mt-1 font-outfit">
             Data-driven insights to optimize performance
           </p>
         </div>
@@ -148,7 +148,7 @@ export default function InsightsPage() {
           <select
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value)}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors duration-200"
+            className="px-4 py-2 border border-gray-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 bg-white dark:bg-zinc-800 text-gray-900 dark:text-zinc-50 font-outfit"
           >
             <option value="7d">Last 7 days</option>
             <option value="30d">Last 30 days</option>

@@ -59,12 +59,12 @@ export function DayView({
   return (
     <div className="space-y-4">
       {/* Day Header */}
-      <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-4 transition-colors duration-200">
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-4">
         <div className="text-center">
-          <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-200">
+          <div className="text-sm text-gray-600 dark:text-zinc-400">
             {selectedDate.toLocaleDateString("en-US", { weekday: "long" })}
           </div>
-          <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-1 transition-colors duration-200">
+          <div className="text-3xl font-bold text-gray-900 dark:text-zinc-50 mt-1">
             {selectedDate.toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",
@@ -73,18 +73,18 @@ export function DayView({
           </div>
           <div className="mt-3 flex items-center justify-center gap-4">
             <div className="text-sm">
-              <span className="text-gray-600 dark:text-gray-400 transition-colors duration-200">
+              <span className="text-gray-600 dark:text-zinc-400">
                 Events:{" "}
               </span>
-              <span className="font-semibold text-blue-600 dark:text-blue-400 transition-colors duration-200">
+              <span className="font-semibold text-blue-600 dark:text-blue-400">
                 {dayEvents.length}
               </span>
             </div>
             <div className="text-sm">
-              <span className="text-gray-600 dark:text-gray-400 transition-colors duration-200">
+              <span className="text-gray-600 dark:text-zinc-400">
                 Duration:{" "}
               </span>
-              <span className="font-semibold text-purple-600 dark:text-purple-400 transition-colors duration-200">
+              <span className="font-semibold text-purple-600 dark:text-purple-400">
                 {dayEvents
                   .reduce((sum, e) => {
                     const duration =
@@ -102,7 +102,7 @@ export function DayView({
       </div>
 
       {/* Hourly Schedule */}
-      <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-800 transition-colors duration-200">
+      <div className="border border-gray-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-white dark:bg-zinc-900">
         {hours.map((hour) => {
           const hourEvents = getEventsForHour(hour);
           const hasFocus = isFocusTime(hour);
@@ -110,7 +110,7 @@ export function DayView({
           return (
             <div
               key={hour}
-              className={`relative border-b border-gray-200 dark:border-gray-700 last:border-b-0 transition-colors duration-200 ${
+              className={`relative border-b border-gray-200 dark:border-zinc-800 last:border-b-0 ${
                 isCurrentHour(hour) ? "bg-blue-50 dark:bg-blue-900/30" : ""
               } ${
                 hasFocus ? "bg-green-50 dark:bg-green-900/20 bg-opacity-30" : ""
@@ -118,12 +118,12 @@ export function DayView({
             >
               <div className="flex">
                 {/* Time label */}
-                <div className="w-20 flex-shrink-0 p-4 border-r border-gray-200 dark:border-gray-700 text-right">
+                <div className="w-20 flex-shrink-0 p-4 border-r border-gray-200 dark:border-zinc-800 text-right">
                   <div
-                    className={`text-sm font-medium transition-colors duration-200 ${
+                    className={`text-sm font-medium ${
                       isCurrentHour(hour)
                         ? "text-blue-600 dark:text-blue-400"
-                        : "text-gray-600 dark:text-gray-400"
+                        : "text-gray-600 dark:text-zinc-400"
                     }`}
                   >
                     {hour === 0
@@ -135,7 +135,7 @@ export function DayView({
                       : `${hour - 12} PM`}
                   </div>
                   {isCurrentHour(hour) && (
-                    <div className="text-xs text-blue-600 dark:text-blue-400 font-semibold transition-colors duration-200">
+                    <div className="text-xs text-blue-600 dark:text-blue-400 font-semibold">
                       Now
                     </div>
                   )}
@@ -143,7 +143,7 @@ export function DayView({
 
                 {/* Event area */}
                 <div
-                  className="flex-1 p-2 min-h-[80px] cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 relative"
+                  className="flex-1 p-2 min-h-[80px] cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800 relative"
                   onClick={() => onSlotClick(selectedDate, hour)}
                 >
                   {hasFocus && hourEvents.length === 0 && (
@@ -156,7 +156,7 @@ export function DayView({
 
                   {hourEvents.length === 0 && !hasFocus && (
                     <div className="flex items-center justify-center h-full opacity-0 hover:opacity-100 transition-opacity">
-                      <button className="flex items-center gap-2 px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white rounded-lg text-xs hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-200">
+                      <button className="flex items-center gap-2 px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white rounded-lg text-xs hover:bg-blue-700 dark:hover:bg-blue-600">
                         <Plus className="w-3 h-3" />
                         Add event
                       </button>

@@ -46,7 +46,7 @@ export function TabsList({ children, className = "" }: TabsListProps) {
   return (
     <div
       className={cn(
-        "inline-flex h-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700 p-1 gap-1 transition-colors duration-200",
+        "inline-flex h-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-zinc-900 p-1 gap-1 border border-gray-200 dark:border-zinc-800",
         className
       )}
     >
@@ -78,11 +78,11 @@ export function TabsTrigger({
     <button
       onClick={() => setActiveTab(value)}
       className={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition-all duration-200",
+        "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition-all font-outfit",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:focus-visible:ring-blue-400",
         isActive
-          ? "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm"
-          : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white/50 dark:hover:bg-gray-600/50",
+          ? "bg-white dark:bg-zinc-800 text-gray-900 dark:text-zinc-50 shadow-sm"
+          : "text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-zinc-100 hover:bg-white/50 dark:hover:bg-zinc-800/50",
         className
       )}
     >

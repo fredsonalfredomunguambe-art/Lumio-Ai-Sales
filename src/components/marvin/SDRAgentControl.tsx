@@ -111,8 +111,10 @@ export function SDRAgentControl({ compact = false }: SDRAgentControlProps) {
               />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900">SDR Agent</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-semibold text-gray-900 dark:text-white font-outfit">
+                SDR Agent
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 font-outfit">
                 {sdrActive ? "Active" : "Inactive"}
               </p>
             </div>
@@ -153,8 +155,10 @@ export function SDRAgentControl({ compact = false }: SDRAgentControlProps) {
             />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">SDR Agent</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white font-outfit">
+              SDR Agent
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 font-outfit">
               Automated outreach and lead engagement
             </p>
           </div>
@@ -187,34 +191,42 @@ export function SDRAgentControl({ compact = false }: SDRAgentControlProps) {
       {/* Stats */}
       <div className="grid grid-cols-4 gap-3 mb-6">
         <div className="text-center">
-          <div className="text-2xl font-bold text-blue-600">
+          <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 font-outfit">
             {stats.activeSequences}
           </div>
-          <div className="text-xs text-gray-600">Active Sequences</div>
+          <div className="text-xs text-gray-600 dark:text-gray-400 font-outfit">
+            Active Sequences
+          </div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-purple-600">
+          <div className="text-2xl font-bold text-purple-600 dark:text-purple-400 font-outfit">
             {stats.leadsInQueue}
           </div>
-          <div className="text-xs text-gray-600">In Queue</div>
+          <div className="text-xs text-gray-600 dark:text-gray-400 font-outfit">
+            In Queue
+          </div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-green-600">
+          <div className="text-2xl font-bold text-green-600 dark:text-green-400 font-outfit">
             {stats.todayOutreach}
           </div>
-          <div className="text-xs text-gray-600">Today's Outreach</div>
+          <div className="text-xs text-gray-600 dark:text-gray-400 font-outfit">
+            Today's Outreach
+          </div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-orange-600">
+          <div className="text-2xl font-bold text-orange-600 dark:text-orange-400 font-outfit">
             {stats.responseRate}%
           </div>
-          <div className="text-xs text-gray-600">Response Rate</div>
+          <div className="text-xs text-gray-600 dark:text-gray-400 font-outfit">
+            Response Rate
+          </div>
         </div>
       </div>
 
       {/* Activity Feed */}
       <div>
-        <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+        <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2 font-outfit">
           <Clock className="w-4 h-4" />
           Recent Activity
         </h4>
@@ -222,8 +234,8 @@ export function SDRAgentControl({ compact = false }: SDRAgentControlProps) {
           {activities.length === 0 ? (
             <div className="text-center py-8 text-gray-500">
               <Bot className="w-8 h-8 mx-auto mb-2 text-gray-400" />
-              <p className="text-sm">No activity yet</p>
-              <p className="text-xs mt-1">
+              <p className="text-sm font-outfit">No activity yet</p>
+              <p className="text-xs mt-1 font-outfit">
                 Activate SDR Agent to start automated outreach
               </p>
             </div>
@@ -244,15 +256,17 @@ export function SDRAgentControl({ compact = false }: SDRAgentControlProps) {
                 />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-medium text-gray-900 text-sm truncate">
+                    <span className="font-medium text-gray-900 dark:text-white text-sm truncate font-outfit">
                       {activity.leadName}
                     </span>
                     <Badge variant="ghost" size="sm">
                       {activity.channel}
                     </Badge>
                   </div>
-                  <p className="text-xs text-gray-600">{activity.action}</p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-600 dark:text-gray-400 font-outfit">
+                    {activity.action}
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-500 mt-1 font-outfit">
                     {activity.timestamp.toLocaleString()}
                   </p>
                 </div>

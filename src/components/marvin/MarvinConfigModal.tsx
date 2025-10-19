@@ -443,7 +443,7 @@ export default function MarvinConfigModal({
                 </div>
                 <button
                   onClick={onClose}
-                  className="p-2 hover:bg-white/80 rounded-xl transition-all duration-200 group"
+                  className="p-2 hover:bg-white/80 rounded-xl transition-all group"
                 >
                   <X className="w-4 h-4 text-gray-500 group-hover:text-gray-700" />
                 </button>
@@ -457,7 +457,7 @@ export default function MarvinConfigModal({
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                    className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                       activeTab === tab.id
                         ? "bg-white text-blue-600 shadow-sm border border-blue-200"
                         : "text-gray-600 hover:text-gray-900 hover:bg-white/50"
@@ -492,7 +492,7 @@ export default function MarvinConfigModal({
                           setConfig({ ...config, companyName: e.target.value })
                         }
                         placeholder="e.g., TechCorp Solutions"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       />
                     </div>
 
@@ -505,7 +505,7 @@ export default function MarvinConfigModal({
                         onChange={(e) =>
                           setConfig({ ...config, industry: e.target.value })
                         }
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       >
                         <option value="">Select an industry</option>
                         <option value="technology">Technology</option>
@@ -533,7 +533,7 @@ export default function MarvinConfigModal({
                           setConfig({ ...config, website: e.target.value })
                         }
                         placeholder="https://yourcompany.com"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       />
                     </div>
 
@@ -548,7 +548,7 @@ export default function MarvinConfigModal({
                           setConfig({ ...config, foundedYear: e.target.value })
                         }
                         placeholder="2020"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -568,7 +568,7 @@ export default function MarvinConfigModal({
                           })
                         }
                         placeholder="11-50 employees"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       />
                     </div>
 
@@ -583,7 +583,7 @@ export default function MarvinConfigModal({
                           setConfig({ ...config, headquarters: e.target.value })
                         }
                         placeholder="New York, NY"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -602,7 +602,7 @@ export default function MarvinConfigModal({
                       }
                       rows={3}
                       placeholder="Brief description of your company and what you do..."
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                     />
                   </div>
 
@@ -620,7 +620,7 @@ export default function MarvinConfigModal({
                       }
                       rows={3}
                       placeholder="What makes your company unique and valuable to customers?"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                     />
                   </div>
 
@@ -644,7 +644,7 @@ export default function MarvinConfigModal({
                             })
                           }
                           placeholder="support@yourcompany.com"
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         />
                       </div>
 
@@ -662,7 +662,7 @@ export default function MarvinConfigModal({
                             })
                           }
                           placeholder="+1 (555) 123-4567"
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         />
                       </div>
                     </div>
@@ -719,7 +719,7 @@ export default function MarvinConfigModal({
                               defaultLanguage: e.target.value,
                             })
                           }
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         >
                           <option value="en">English</option>
                           <option value="pt">Portuguese</option>
@@ -783,7 +783,7 @@ export default function MarvinConfigModal({
                                 })
                               }
                               placeholder="followup@yourcompany.com"
-                              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                             />
                           </div>
 
@@ -834,7 +834,7 @@ export default function MarvinConfigModal({
                               businessType: e.target.value,
                             })
                           }
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         >
                           <option value="">Select business type</option>
                           <option value="startup">Startup</option>
@@ -863,7 +863,7 @@ export default function MarvinConfigModal({
                             })
                           }
                           placeholder="e.g., B2B SaaS, E-commerce, Healthcare"
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         />
                       </div>
                     </div>
@@ -882,7 +882,7 @@ export default function MarvinConfigModal({
                         }
                         rows={3}
                         placeholder="Describe how your business makes money (e.g., subscription, one-time sales, marketplace, etc.)"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                       />
                     </div>
                   </div>
@@ -1083,7 +1083,7 @@ export default function MarvinConfigModal({
                             setConfig({ ...config, marketSize: e.target.value })
                           }
                           placeholder="e.g., $50B annually"
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         />
                       </div>
 
@@ -1101,7 +1101,7 @@ export default function MarvinConfigModal({
                             })
                           }
                           placeholder="e.g., 15% annually"
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         />
                       </div>
                     </div>
@@ -1128,7 +1128,7 @@ export default function MarvinConfigModal({
                             })
                           }
                           placeholder="e.g., $1M - $5M"
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         />
                       </div>
 
@@ -1144,7 +1144,7 @@ export default function MarvinConfigModal({
                               fundingStage: e.target.value,
                             })
                           }
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         >
                           <option value="">Select funding stage</option>
                           <option value="bootstrapped">Bootstrapped</option>
@@ -1171,7 +1171,7 @@ export default function MarvinConfigModal({
                       }
                       placeholder="Describe your ideal customer profile..."
                       rows={3}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                     />
                   </div>
 
@@ -1212,7 +1212,7 @@ export default function MarvinConfigModal({
                           onClick={() =>
                             setConfig({ ...config, tone: tone.value })
                           }
-                          className={`p-4 rounded-xl border-2 transition-all duration-200 text-left ${
+                          className={`p-4 rounded-xl border-2 transition-all text-left ${
                             config.tone === tone.value
                               ? "border-blue-500 bg-blue-50 text-blue-700"
                               : "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
@@ -1357,7 +1357,7 @@ export default function MarvinConfigModal({
                                   )
                                 }
                                 placeholder="e.g., Professional"
-                                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                               />
                             </div>
                             <div>
@@ -1375,7 +1375,7 @@ export default function MarvinConfigModal({
                                   )
                                 }
                                 placeholder="e.g., $299/month"
-                                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                               />
                             </div>
                           </div>
@@ -1396,7 +1396,7 @@ export default function MarvinConfigModal({
                               }
                               rows={4}
                               placeholder="One feature per line..."
-                              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                             />
                           </div>
                         </div>
@@ -1430,7 +1430,7 @@ export default function MarvinConfigModal({
                             setNewQA({ ...newQA, question: e.target.value })
                           }
                           placeholder="e.g., What are your pricing plans?"
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         />
                       </div>
                       <div>
@@ -1444,7 +1444,7 @@ export default function MarvinConfigModal({
                             setNewQA({ ...newQA, answer: e.target.value })
                           }
                           placeholder="e.g., Our plans start at $99/month..."
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         />
                       </div>
                     </div>
@@ -1613,7 +1613,7 @@ export default function MarvinConfigModal({
                   <button
                     onClick={handleSave}
                     disabled={isLoading}
-                    className="flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 transition-all duration-200 font-medium shadow-lg"
+                    className="flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 transition-all font-medium shadow-lg"
                   >
                     {isLoading ? (
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />

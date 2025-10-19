@@ -66,7 +66,7 @@ export function Modal({
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
               className={cn(
-                "relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full pointer-events-auto max-h-[90vh] overflow-hidden flex flex-col transition-colors duration-200",
+                "relative bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl w-full pointer-events-auto max-h-[90vh] overflow-hidden flex flex-col border border-gray-200 dark:border-zinc-800",
                 sizes[size],
                 className
               )}
@@ -74,7 +74,7 @@ export function Modal({
               {showCloseButton && (
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-4 p-2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200 z-10"
+                  className="absolute top-4 right-4 p-2 text-gray-400 dark:text-zinc-500 hover:text-gray-600 dark:hover:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-lg z-10"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -97,7 +97,7 @@ export function ModalHeader({ children, className = "" }: ModalHeaderProps) {
   return (
     <div
       className={cn(
-        "px-6 py-4 border-b border-gray-200 dark:border-gray-700",
+        "px-6 py-4 border-b border-gray-200 dark:border-zinc-800",
         className
       )}
     >
@@ -115,7 +115,7 @@ export function ModalTitle({ children, className = "" }: ModalTitleProps) {
   return (
     <h2
       className={cn(
-        "text-xl font-semibold text-gray-900 dark:text-gray-100",
+        "text-xl font-semibold text-gray-900 dark:text-zinc-50 font-outfit",
         className
       )}
     >
@@ -135,7 +135,10 @@ export function ModalDescription({
 }: ModalDescriptionProps) {
   return (
     <p
-      className={cn("text-sm text-gray-500 dark:text-gray-400 mt-1", className)}
+      className={cn(
+        "text-sm text-gray-500 dark:text-zinc-400 mt-1 font-outfit",
+        className
+      )}
     >
       {children}
     </p>
@@ -164,7 +167,7 @@ export function ModalFooter({ children, className = "" }: ModalFooterProps) {
   return (
     <div
       className={cn(
-        "px-6 py-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-end gap-2",
+        "px-6 py-4 border-t border-gray-200 dark:border-zinc-800 flex items-center justify-end gap-2",
         className
       )}
     >

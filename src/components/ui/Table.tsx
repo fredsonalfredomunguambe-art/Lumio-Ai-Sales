@@ -28,7 +28,7 @@ export function TableHeader({ children, className = "" }: TableHeaderProps) {
   return (
     <thead
       className={cn(
-        "bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700",
+        "bg-gray-50 dark:bg-zinc-900 border-b border-gray-200 dark:border-zinc-800",
         className
       )}
     >
@@ -45,7 +45,7 @@ interface TableBodyProps {
 export function TableBody({ children, className = "" }: TableBodyProps) {
   return (
     <tbody
-      className={cn("divide-y divide-gray-200 dark:divide-gray-700", className)}
+      className={cn("divide-y divide-gray-200 dark:divide-zinc-800", className)}
     >
       {children}
     </tbody>
@@ -69,8 +69,7 @@ export function TableRow({
     <tr
       onClick={onClick}
       className={cn(
-        "transition-colors",
-        hover && "hover:bg-gray-50 dark:hover:bg-gray-800",
+        hover && "hover:bg-gray-50 dark:hover:bg-zinc-800/50",
         onClick && "cursor-pointer",
         className
       )}
@@ -98,9 +97,9 @@ export function TableHead({
   return (
     <th
       className={cn(
-        "px-4 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider",
+        "px-4 py-3 text-left text-xs font-semibold text-gray-700 dark:text-zinc-300 uppercase tracking-wider font-outfit",
         sortable &&
-          "cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-700",
+          "cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-zinc-800",
         className
       )}
       onClick={sortable ? onSort : undefined}
@@ -108,7 +107,7 @@ export function TableHead({
       <div className="flex items-center gap-2">
         {children}
         {sortable && (
-          <span className="text-gray-400 dark:text-gray-500">
+          <span className="text-gray-400 dark:text-zinc-500">
             {sortDirection === "asc" ? (
               <ArrowUp className="w-3.5 h-3.5" />
             ) : sortDirection === "desc" ? (
@@ -132,7 +131,7 @@ export function TableCell({ children, className = "" }: TableCellProps) {
   return (
     <td
       className={cn(
-        "px-4 py-3 text-sm text-gray-900 dark:text-gray-100",
+        "px-4 py-3 text-sm text-gray-900 dark:text-zinc-100 font-outfit",
         className
       )}
     >
